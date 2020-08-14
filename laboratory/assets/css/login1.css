@@ -1,0 +1,198 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    font-family: SourceHanSansCN-Regular;
+}
+.wtx-body{
+    position: fixed !important;
+    top: 60px !important;
+    bottom: 0px !important;
+    left: 0;
+    right: 0;
+}
+.wtx-main{
+    width: 100%;
+    height: 100%;
+}
+.wtx-head{
+    width: 100%;
+    /* height: 14%; */
+    /* height: 97px; */
+    height: 60px;
+    background-color: rgb(35,38,46);
+}
+.wtx-logo{
+    width: 30px;
+    height: 30px;
+    float: left;
+    line-height: 60px;
+    margin-left: 20px;
+}
+.wtx-logo img{
+    width: 100%;
+    height: 100%;
+}
+.wtx-txt h2{
+    font-size: 19.5px;
+    line-height: 60px;
+}
+.wtx-txt{
+    font-family: '华文新魏';
+    color: #fff;
+    font-size: 13px ;
+    line-height: 60px;
+    margin-left: 63px;
+}
+.wtx-foot{
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    padding:1% 2% 4%;
+    box-sizing: border-box;
+
+}
+.wtx-left-one{
+    height: 38%;
+    background-color: #fff;
+    padding: 4% 2%;
+    box-sizing: border-box;
+    
+}
+.wtx-left-one h3{
+    font-size: 20px;
+    float: left;
+    
+}
+.wtx-pro{
+    width: 15%;
+    height: 16%;
+    line-height: 26px;
+    text-align: center;
+    float: right;
+    background-color: #f4f4f4;
+    color: rgb(36,38,43);
+    border-radius: 22px;
+
+}
+.wtx-clear{
+    clear: both;
+}
+
+.wtx-pro-txt{
+    margin-top: 10px;
+    display: block;
+    line-height: 26px;
+    color: rgb(36,38,43);
+    opacity: 0.8;
+    /* border-bottom: 1px #f4f4f4  dotted; */
+    /* border-style:; */
+}
+hr{
+    border-style: dashed;
+}
+.wtx-prog{
+    margin-top: 23px;
+}
+.wtx-right{
+    /* height: 77%; */
+    /* height: 500px; */
+    background-color: #fff;
+    /*float: left;*/ 
+    margin-top: 10px;
+    /* overflow: hidden; */
+} 
+.wtx-right h3{
+    font-size: 20px;
+    float: left;
+}
+.wtx-left-three{
+    margin-top:10px ;
+     /*float: right; */
+}
+/* .echarts{
+    border: 1px solid red;
+    width: 600px;
+    height: 442px;
+    margin-top: 20px;
+} */
+.wtx-one{
+    background:linear-gradient(rgb(140,233,225),rgb(42,211,197));
+    height: 12%;
+    /* margin-right: 72px; */
+    padding: 12px;
+}
+.wtx-one h2{
+    font-size: 18px;
+    color: #fff;
+
+}
+.wtx-two{
+    background:linear-gradient(rgb(232,203,114),rgb(218,171,29));
+    height: 12%;
+    /* margin-right: 72px; */
+    padding: 12px;
+}
+.wtx-two h2{
+    font-size: 18px;
+    color: #fff;
+    
+}
+.wtx-three{
+    background:linear-gradient(rgb(219,220,224),rgb(159,159,159));
+    height: 12%;
+    padding: 12px;
+}
+.wtx-three h2{
+    font-size: 18px;
+    color: #fff;
+    
+}
+.wtx-state{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.wtx-state hr{
+   color: #fff;
+
+}
+.wtx-btn{
+    background-color: black;
+    border-radius: 5px;
+    height: 27px;
+    line-height: 27px;
+}
+.layui-input{
+    height: 28px!important;
+}
+.layui-nav-item a:hover{
+text-decoration: none;
+}
+.layui-nav-child{
+    line-height: 36px !important;
+}
+dd, dt{
+    line-height: 36px !important;
+}
+.echarts1 canvas{
+    
+    position: absolute!important;
+    left: 72px!important;
+    /* top: 0px!important; */
+    /* width: 250px!important;
+    height: 250px!important;
+    padding: 20px!important; */
+}
+.echarts2 canvas{
+  
+    position: absolute!important;
+    left: 72px!important;
+    /* top: 0px!important; */
+    /* width: 250px!important;
+    height: 250px!important;
+    padding: 20px!important; */
+}

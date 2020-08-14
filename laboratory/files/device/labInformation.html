@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>高校实验室管理平台 </title>
+  <meta name="keywords" content="高校实验室管理平台" />
+  <meta name="description" content="高校实验室管理平台" />
+  <meta charset="utf-8">
+  <meta name="view-port">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../assets/css/u-reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/css/layui.css">
+  <link rel="stylesheet" href="../../assets/css/login.css">
+  <link rel="icon" href="../../assets/images/icon.png">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1842343_yukudkn3aw.css">
+  <link rel="stylesheet" href="../../assets/css/device.css">
+
+  <script src="../../assets/js/table1.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/4.7.0/echarts.min.js"></script>
+  <script src="https://echarts.baidu.com/resource/echarts-liquidfill-latest/dist/echarts-liquidfill.min.js"></script>
+  <script src="../../assets/js/labecharts.js"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <style>
+    body {
+      background-color: #fff;
+    }
+
+    #app {
+      padding: 2%;
+      /* font-family: '华文新魏'; */
+    }
+
+
+    .echarts {
+      padding: 10% 0;
+      width: 100%;
+      height: 500px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <a href="../../index.html">
+        <div class="layui-logo">
+          <img src="../../assets/images/logo.png" alt="">
+          高校实验室管理平台
+        </div>
+      </a>
+      <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
+        <li class="layui-nav-item">
+            <a href="javascript:;">设备</a>
+            <dl class="layui-nav-child">
+                <dd><a href="../device/device.html">设备信息查看</a></dd>
+                <dd><a href="../device/labInformation.html">项目信息</a></dd>
+                <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
+                <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">耗材</a>
+            <dl class="layui-nav-child">
+                <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
+                <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
+                <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
+                <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">预约</a>
+            <dl class="layui-nav-child">
+                <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
+
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">项目</a>
+            <dl class="layui-nav-child">
+                <dd><a href="../project/project-science.html">实验项目</a></dd>
+                <dd><a href="javascript:;">教学资源</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">系统</a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:;">用户信息</a></dd>
+                <dd><a href="./system-password.html">密码修改</a></dd>
+            </dl>
+        </li>
+    </ul>
+
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li>
+        <li class="layui-nav-item"><a href="../../index.html"><i class="iconfont icon-shouye"></i>主页</a></li>
+        <li class="layui-nav-item"><a href="../../login.html">退出</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="layui-row">
+    <div class="layui-col-md8">
+
+      <div id="app">
+        <div class="layui-form">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr v-if="headdata.length">
+                <th v-for="item in headdata" :key="'headdata'+item.id">{{item.names}}</th>
+
+              </tr>
+            </thead>
+            <tbody v-if="labdata.length">
+              <tr>
+                <td>2</td>
+                <td>笔记本电脑</td>
+                <td>华硕</td>
+                <td>FX505DD/DT/DU</td>
+                <td>1</td>
+                <td>402</td>
+                <td>118815243524</td>
+                <td>2017-12-11</td>
+                <!-- <td style="width: 200px;">
+                              <button type="button" class="layui-btn layui-btn-sm layui-btn-normal c"
+                                  @click="querylabdata(item.id)">
+                                  查看
+                              </button>
+                              <button type="button" class="layui-btn layui-btn-sm layui-btn-danger s"
+                                  @click="deletelabdata(item.id)">
+                                  删除
+                              </button>
+                          </td> -->
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-bottom">
+            <button type="button" lay-submit="" class="layui-btn d" id="exportExcel" name="exportExcel">
+              <i class="layui-icon"></i>导出实验项目信息表</button>
+
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li class="disabled" style="display: none;">
+                  <span>
+                    <span aria-hidden="true">&laquo;</span>
+                  </span>
+                </li>
+
+                <li class="active">
+                  <span>1 <span class="sr-only">(current)</span></span>
+                </li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li style="display: none;">
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="layui-col-md4">
+      <div class="echarts"></div>
+    </div>
+  </div>
+
+
+  <script src="../../assets/js/vue/vue.js"></script>
+  <script src="../../assets/js/layui_exts/layui.all.js"></script>
+  <!--先加载jquery-->
+  <script src="../../assets/js/jQuery/jquery-3.4.1.js"></script>
+  <!--再加载插件-->
+  <script src="../../assets/js/layui_exts/excel.js"></script>
+  <script>
+    //JavaScript代码区域
+    layui.use(['element'], function () {
+      var element = layui.element;
+    });
+  </script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+
+      active: 'active',
+      active1: 'active1',
+      data: {
+        optiondata: [
+          { id: 1, names: '服务器' },
+          { id: 2, names: '计算机' },
+          { id: 3, names: '交换机' },
+          { id: 4, names: '投影仪' },
+          { id: 5, names: '电子商务模拟软件' },
+          { id: 6, names: '快速扫描仪' },
+          { id: 7, names: '打印机' },
+          { id: 8, names: '音箱' },
+          { id: 9, names: '点钞券' },
+          { id: 10, names: '电喷发动机' },
+          { id: 11, names: '智能试剂柜' },
+          { id: 12, names: '离心机' },
+        ],
+        headdata: [
+          { id: 1, names: '实验编号' },
+          { id: 2, names: '实验名称' },
+          { id: 9, names: '实验状态' },
+          { id: 3, names: '所属院系' },
+          { id: 4, names: '所用设备' },
+          { id: 5, names: '指导老师' },
+          { id: 6, names: '实验日期' },
+          { id: 7, names: '实验时间段' },
+          // { id: 8, names: '操作' },
+
+        ],
+        labdata: [
+          { lid: 1, ltitle: '蒸馏和沸点的测定', lfaculty: '化工', ldevice: '玻璃器皿、数字贝克曼温度计、蒸馏头、冷凝器、冷凝管、智能试剂柜', lteacher: '李金', ldate: '2020-05-25', ltime: '10:00-11:00', lstate: '进行中' },
+          { lid: 2, ltitle: '税率讲解', lfaculty: '会计', ldevice: '验钞机、算盘、投影仪', lteacher: '王元', ldate: '2020-05-23', ltime: '15:00-16:00', lstate: '未进行' },
+          { lid: 3, ltitle: '苯甲酸的制备', lfaculty: '化工', ldevice: '天平、冷凝管、电炉、布氏漏斗、抽滤瓶、玻璃器皿', lteacher: '杜飞', ldate: '2020-05-21', ltime: '08:00-09:00', lstate: '审核中' },
+          { lid: 4, ltitle: '溴丁烷的制备', lfaculty: '化工', ldevice: '冷凝管、磁力加热搅拌器、万能夹、玻璃器皿、天平', lteacher: '李强', ldate: '2020-05-18', ltime: '09:00-10:00', lstate: '未进行' },
+          { lid: 5, ltitle: '水循环系统', lfaculty: '生物', ldevice: '玻璃器皿、显微镜、智能试剂柜', lteacher: '王茹', ldate: '2020-05-14', ltime: '11:00-12:00', lstate: '进行中' },
+          { lid: 6, ltitle: '电气动实验', lfaculty: '机电', ldevice: '三联水嘴、玻璃器皿、冷凝器', lteacher: '谢翔', ldate: '2020-05-10', ltime: '16:00-17:00', lstate: '未进行' },
+          { lid: 7, ltitle: '系统开发', lfaculty: '信息', ldevice: '服务器、交换机、电脑、标准投影仪、网络设备控制器、配线架、防火墙', lteacher: '潘森', ldate: '2020-05-07', ltime: '14:30-15:00', lstate: '进行中' },
+          { lid: 8, ltitle: '排放水中微量的铜', lfaculty: '化工', ldevice: '玻璃器皿、电热数显恒温水浴锅、化工水槽、低温恒温槽、智能试剂柜', lteacher: '郝宇', ldate: '2020-04-28', ltime: '10:00-11:30', lstate: '已完成' },
+          { lid: 9, ltitle: '质粒提取', lfaculty: '化工', ldevice: '离心机、低温恒温槽、玻璃器皿', lteacher: '贾旭东', ldate: '2020-04-25', ltime: '09:00-11:00', lstate: '未进行' },
+          { lid: 10, ltitle: '硫酸铜的提纯', lfaculty: '化工', ldevice: '智能试剂柜、玻璃器皿、药品柜', lteacher: '韩硕', ldate: '2020-04-20', ltime: '14:00-15:00', lstate: '已完成' },
+          { lid: 11, ltitle: '气相色谱法分析苯系物', lfaculty: '化工', ldevice: '智能试剂柜、玻璃器皿、药品柜、分光光度计', lteacher: '陈芊芊', ldate: '2020-04-18', ltime: '08:00-10:00', lstate: '未进行' },
+          { lid: 12, ltitle: '碱灰中总碱度的测定', lfaculty: '化工', ldevice: '精密ph计、智能试剂柜、玻璃器皿', lteacher: '陆函', ldate: '2020-04-17', ltime: '15:00-17:00', lstate: '已完成' },
+          { lid: 13, ltitle: '化工反应速率测定', lfaculty: '化工', ldevice: '微波萃取仪、玻璃器皿、智能试剂柜', lteacher: '吕笑', ldate: '2020-04-12', ltime: '15:00-16:00', lstate: '已完成' },
+          { lid: 14, ltitle: '高效液相色谱', lfaculty: '化工', ldevice: '玻璃器皿、分光光度计', lteacher: '华成玉', ldate: '2020-04-10', ltime: '16:00-17:00', lstate: '待审核' },
+          { lid: 15, ltitle: '焓变的测定', lfaculty: '化工', ldevice: '玻璃器皿、显微镜、智能试剂柜', lteacher: '张豪恩', ldate: '2020-04-08', ltime: '10:00-12:00', lstate: '已完成' },
+          { lid: 16, ltitle: '核磁', lfaculty: '化工', ldevice: '智能试剂柜、玻璃器皿、药品柜、电位计', lteacher: '张凡凡', ldate: '2020-04-07', ltime: '11:00-12:00', lstate: '待审核' },
+          { lid: 17, ltitle: '离子选择性电极', lfaculty: '化工', ldevice: '智能试剂柜、玻璃器皿、微波萃取仪', lteacher: '黄卡可', ldate: '2020-04-05', ltime: '10:00-11:00', lstate: '已完成' },
+          { lid: 18, ltitle: '邻二氮杂菲分光光度发测定微量铁', lfaculty: '化工', ldevice: '智能试剂柜、玻璃器皿、微波萃取仪', lteacher: '安安', ldate: '2020-04-03', ltime: '15:00-17:00', lstate: '审核中' },
+        /*   { lid: 19, ltitle: '机械振动', lfaculty: '化工', ldevice: '喷油嘴清洗系统、可调节扭力扳手、整流充电机', lteacher: '贺佳佳', ldate: '2020-04-01', ltime: '10:00-12:00', lstate: '已完成' },
+          { lid: 20, ltitle: '排队时延和丢包', lfaculty: '化工', ldevice: '电脑、投影仪、音箱、控制器、控制器、集线器', lteacher: '安环科', ldate: '2020-03-29', ltime: '10:00-12:00', lstate: '已完成' },
+ */
+        ],
+      },
+      created() {
+        this.selected = this.optiondata[0].id;
+      },
+      watch: {
+        labdata: function () {
+          this._save();
+        },
+      },
+      methods: {
+        initlabdata() {
+          localStorage.setItem('labdata', JSON.stringify(this.labdata));
+          let labdata = localStorage.getItem('labdata');
+          if (labdata) {
+            this.labdata = JSON.parse(labdata);
+          };
+        },
+        inserttodo() {
+          let id = this._lastId();
+          //拷贝
+          let todo = Object.assign({}, this.todo, { id });
+
+          this.todolist.push(todo);
+
+          this.todo = {
+            id: 0,
+            title: '',
+            ctime: '',
+            status: false,
+          };
+
+        },
+        deletelabdata(id) {
+          this.labdata = this.labdata.filter(ele => ele.lid != id);
+
+        },
+        querylabdata(id) {
+          this.labdata = this.labdata.filter(ele => ele.lid == id);
+          // console.log(labdata);
+        },
+        _lastId() {
+          let todolist = this.todolist;
+          let id = 1;
+          if (todolist.length) {
+            id = todolist[todolist.length - 1].id + 1;
+          }
+          return id;
+        },
+        _save() {
+
+          let labdata = JSON.stringify(this.labdata);
+          localStorage.setItem('labdata', labdata);
+        }
+      },
+      computed: {
+        alllength: function () {
+          return this.todolist.length;
+        },
+        donelength: function () {
+          return this.todolist.filter(ele => ele.status).length;
+        },
+        doinglength: function () {
+          return this.todolist.filter(ele => !ele.status).length;
+        }
+
+      },
+      mounted() {
+        this.initlabdata();
+      }
+    })
+
+  </script>
+  <script>
+    layui.config({//配置并导入excel插件
+      base: '${base}/scripts/layui/layui_exts/'
+    }).use(['excel', 'layer'], function () {
+      var $ = layui.$;
+      var layer = layui.layer;
+      var excel = layui.excel;
+      $('#exportExcel').on('click', function () {
+        // 模拟从后端接口读取需要导出的数据
+        var data = JSON.parse(localStorage.getItem('labdata'));
+
+        console.dir(data);
+        console.log(typeof data);
+
+        data = excel.filterExportData(data, [
+          'lid',
+          'ltitle',
+          'lfaculty',
+          'ldevice',
+          'lteacher',
+          'ldate',
+          'ltime',
+        ]);
+        data.unshift({
+          lid: "实验编号", ltitle: '实验名称', lfaculty: '所属院系', ldevice: '所用设备', lteacher: '指导老师',
+          ldate: '实验日期', ltime: '实验时间段'
+        });
+
+        var timestart = Date.now();
+        excel.exportExcel(data, '实验项目信息' + '.xlsx', 'xlsx');
+      });
+    });
+
+  </script>
+</body>
+
+</html>

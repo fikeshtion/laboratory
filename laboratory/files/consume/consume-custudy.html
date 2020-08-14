@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>高校实验室管理平台 </title>
+    <meta name="keywords" content="高校实验室管理平台" />
+    <meta name="description" content="高校实验室管理平台" />
+    <meta charset="utf-8">
+    <meta name="view-port">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../assets/css/u-reset.css">
+    <link rel="stylesheet" href="../../assets/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../assets/css/login.css">
+    <link rel="icon" href="../../assets/images/icon.png">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1842343_yukudkn3aw.css">
+    <link rel="stylesheet" href="../../assets/css/device.css">
+    <script src="../../assets/js/jQuery/jquery-3.4.1.js"></script>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        #table{
+            padding: 2%;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin" >
+        <div class="layui-header">
+            <a href="../../index.html">
+                <div class="layui-logo">
+                    <img src="../../assets/images/logo.png" alt="">
+                    高校实验室管理平台
+                </div>
+            </a>
+            <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">设备</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="../device/device.html">设备信息查看</a></dd>
+                        <dd><a href="../device/labInformation.html">项目信息</a></dd>
+                        <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
+                        <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">耗材</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
+                        <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
+                        <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
+                        <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">预约</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
+
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">项目</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="../project/project-science.html">实验项目</a></dd>
+                        <dd><a href="javascript:;">教学资源</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">用户信息</a></dd>
+                        <dd><a href="./system-password.html">密码修改</a></dd>
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i
+                        class="iconfont icon-caidan1"></i></li>
+                <li class="layui-nav-item"><a href="../../index.html"><i class="iconfont icon-shouye"></i>主页</a></li>
+                <li class="layui-nav-item"><a href="../../login.html">退出</a></li>
+            </ul>
+        </div>
+        <div id="table" >
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+        </div>
+        
+    </div>
+
+</body>
+<script src="../../assets/js/layui_exts/layui.all.js"></script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            , url: 'http://192.168.0.117:8080/lab/allnews',
+            method: "get",
+            count: 50,
+            page: true,
+            cols: [[
+                { field: 'author', title: '用户名' }
+                , { field: 'content', title: '内容' }
+                , { field: 'informationSource', title: '信息来源' }
+                , { field: 'time', title: '事件' }
+                , { field: 'title', title: '标题' }
+            ]],
+            response: {
+                statusName: 'code' //数据状态的字段名称，默认：code
+                , statusCode: 200 //成功的状态码，默认：0
+                , msgName: 'message' //状态信息的字段名称，默认：msg
+                , countName: 'count' //数据总数的字段名称，默认：count
+                , dataName: 'data' //数据列表的字段名称，默认：data
+            },
+
+            done: function (res, curr, count) {
+                //如果是异步请求数据方式，res即为你接口返回的信息。
+                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                console.log(res.data);
+
+                //得到当前页码
+                console.log(curr);
+                console.log(count);
+
+            }
+
+
+
+
+        });
+    });
+</script>
+
+
+</html>
