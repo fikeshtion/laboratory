@@ -62,45 +62,45 @@
       </a>
       <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
         <li class="layui-nav-item">
-            <a href="javascript:;">设备</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../device/device.html">设备信息查看</a></dd>
-                <dd><a href="../device/labInformation.html">项目信息</a></dd>
-                <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
-                <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
-            </dl>
+          <a href="javascript:;">设备</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../device/device.html">设备信息查看</a></dd>
+            <dd><a href="../device/labInformation.html">项目信息</a></dd>
+            <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
+            <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">耗材</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
-                <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
-                <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
-                <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
-            </dl>
+          <a href="javascript:;">耗材</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
+            <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
+            <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
+            <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">预约</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
+          <a href="javascript:;">预约</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
 
-            </dl>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">项目</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../project/project-science.html">实验项目</a></dd>
-                <dd><a href="javascript:;">教学资源</a></dd>
-            </dl>
+          <a href="javascript:;">项目</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../project/project-science.html">实验项目</a></dd>
+            <dd><a href="javascript:;">教学资源</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">系统</a>
-            <dl class="layui-nav-child">
-                <dd><a href="javascript:;">用户信息</a></dd>
-                <dd><a href="./system-password.html">密码修改</a></dd>
-            </dl>
+          <a href="javascript:;">系统</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">用户信息</a></dd>
+            <dd><a href="./system-password.html">密码修改</a></dd>
+          </dl>
         </li>
-    </ul>
+      </ul>
 
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li>
@@ -190,7 +190,7 @@
     let vm = new Vue({
       el: '#app',
       data: {
-        
+
         headdata: [
           { id: 1, names: '设备编号' },
           { id: 3, names: '设备名称' },
@@ -199,9 +199,9 @@
           { id: 6, names: '设备数量' },
           { id: 7, names: '实验室名称' },
           /*    { id: 8, names: '出厂编号' },
-             { id: 9, names: '出厂日期' },
-             { id: 10, names: '生产厂商编号' },
-             { id: 11, names: '供应商编号' }, */
+              { id: 9, names: '出厂日期' },
+              { id: 10, names: '生产厂商编号' },
+              { id: 11, names: '供应商编号' }, */
           // { id: 12, names: '操作' },
         ],
         devicedata: [
@@ -497,152 +497,152 @@
             arate: '29%'
           },
 
-           {
-             id: 21,
-             names: '服务器',
-             brand: '戴尔（DELL）Poweredge R740 ',
-             conid: '已使用',
-             num: '60',
-             roomnames: '电商实验室',
-             facid: 'CA02201910251',
-             factime: '2019-10-25',
-             proid: '12689',
-             supid: '1003030',
-             uratio: '21%',
-             arate: '5%'
-           },
-           {
-             id: 22,
-             names: '笔记本电脑',
-             brand: '华硕（ASUS）PX574',
-             conid: '已使用',
-             num: '60',
-             roomnames: '网络实验室',
-             facid: 'BA02201903257',
-             factime: '2019-03-25',
-             proid: '18685',
-             supid: '1105023',
-             uratio: '32%',
-             arate: '10%'
-           },
- 
-           {
-             id: 23,
-             names: '标准投影仪',
-             brand: '极米Z6',
-             conid: '已使用',
-             num: '10',
-             roomnames: '电商实验室',
-             facid: 'AG02201711268',
-             factime: '2017-11-26',
-             proid: '79026',
-             supid: '1011283',
-             uratio: '75%',
-             arate: '55%'
-           },
- 
-           {
-             id: 24,
-             names: '交换机',
-             brand: '华为（HUAWEI）',
-             conid: '已使用',
-             num: '30',
-             roomnames: '网络实验室',
-             facid: 'HN03201908088',
-             factime: '2019-08-08',
-             proid: '12256',
-             supid: '1110368',
-             uratio: '25%',
-             arate: '8%'
-           },
- 
-           {
-             id: 25,
-             names: '扫描仪',
-             brand: '科密GP1500AF',
-             conid: '已使用',
-             num: '30',
-             roomnames: '会计实验室',
-             facid: 'OJ58201809058',
-             factime: '2018-09-05',
-             proid: '89126',
-             supid: '1206797',
-             uratio: '34%',
-             arate: '24%'
-           },
-           {
-             id: 26,
-             names: '发动机拆装常规工具组',
-             brand: '如友',
-             conid: '已使用',
-             num: '10',
-             roomnames: '机电实验室',
-             facid: 'PK89201705258',
-             factime: '2017-05-25',
-             proid: '78126',
-             supid: '1308168',
-             uratio: '57%',
-             arate: '45%'
-           },
- 
-           {
-             id: 27,
-             names: '智能试剂柜',
-             brand: ' 洛克菲勒（LUO KE FEI LE）',
-             conid: '已使用',
-             num: '1',
-             roomnames: '化工材料室',
-             facid: 'HC02201907038',
-             factime: '2019-07-03',
-             proid: '78526',
-             supid: '1206989',
-             uratio: '8%',
-             arate: '5%'
-           },
- 
-           {
-             id: 28,
-             names: '电喷发动机',
-             brand: '恒硕通',
-             conid: '已使用',
-             num: '10',
-             roomnames: '汽修实验室',
-             facid: 'KL82201803064',
-             factime: '2018-03-06',
-             proid: '85126',
-             supid: '1302589',
-             uratio: '67%',
-             arate: '36%'
-           },
-           {
-             id: 29,
-             names: '离心机',
-             brand: '力辰科技（lichen）',
-             conid: '已使用',
-             num: '2',
-             roomnames: '生物实验室',
-             facid: 'SW15201705279',
-             factime: '2017-05-27',
-             proid: '78126',
-             supid: '1209831',
-             uratio: '55%',
-             arate: '50%'
-           },
- 
-           {
-             id: 30,
-             names: '验钞机',
-             brand: '科密B1+',
-             conid: '已使用',
-             num: '2',
-             roomnames: '会计实验室',
-             facid: 'KJ25201911268',
-             factime: '2019-11-26',
-             proid: '58186',
-             supid: '1308719',
-             uratio: '24%',
-             arate: '6%'
-           },
+          {
+            id: 21,
+            names: '服务器',
+            brand: '戴尔（DELL）Poweredge R740 ',
+            conid: '已使用',
+            num: '60',
+            roomnames: '电商实验室',
+            facid: 'CA02201910251',
+            factime: '2019-10-25',
+            proid: '12689',
+            supid: '1003030',
+            uratio: '21%',
+            arate: '5%'
+          },
+          {
+            id: 22,
+            names: '笔记本电脑',
+            brand: '华硕（ASUS）PX574',
+            conid: '已使用',
+            num: '60',
+            roomnames: '网络实验室',
+            facid: 'BA02201903257',
+            factime: '2019-03-25',
+            proid: '18685',
+            supid: '1105023',
+            uratio: '32%',
+            arate: '10%'
+          },
+
+          {
+            id: 23,
+            names: '标准投影仪',
+            brand: '极米Z6',
+            conid: '已使用',
+            num: '10',
+            roomnames: '电商实验室',
+            facid: 'AG02201711268',
+            factime: '2017-11-26',
+            proid: '79026',
+            supid: '1011283',
+            uratio: '75%',
+            arate: '55%'
+          },
+
+          {
+            id: 24,
+            names: '交换机',
+            brand: '华为（HUAWEI）',
+            conid: '已使用',
+            num: '30',
+            roomnames: '网络实验室',
+            facid: 'HN03201908088',
+            factime: '2019-08-08',
+            proid: '12256',
+            supid: '1110368',
+            uratio: '25%',
+            arate: '8%'
+          },
+
+          {
+            id: 25,
+            names: '扫描仪',
+            brand: '科密GP1500AF',
+            conid: '已使用',
+            num: '30',
+            roomnames: '会计实验室',
+            facid: 'OJ58201809058',
+            factime: '2018-09-05',
+            proid: '89126',
+            supid: '1206797',
+            uratio: '34%',
+            arate: '24%'
+          },
+          {
+            id: 26,
+            names: '发动机拆装常规工具组',
+            brand: '如友',
+            conid: '已使用',
+            num: '10',
+            roomnames: '机电实验室',
+            facid: 'PK89201705258',
+            factime: '2017-05-25',
+            proid: '78126',
+            supid: '1308168',
+            uratio: '57%',
+            arate: '45%'
+          },
+
+          {
+            id: 27,
+            names: '智能试剂柜',
+            brand: ' 洛克菲勒（LUO KE FEI LE）',
+            conid: '已使用',
+            num: '1',
+            roomnames: '化工材料室',
+            facid: 'HC02201907038',
+            factime: '2019-07-03',
+            proid: '78526',
+            supid: '1206989',
+            uratio: '8%',
+            arate: '5%'
+          },
+
+          {
+            id: 28,
+            names: '电喷发动机',
+            brand: '恒硕通',
+            conid: '已使用',
+            num: '10',
+            roomnames: '汽修实验室',
+            facid: 'KL82201803064',
+            factime: '2018-03-06',
+            proid: '85126',
+            supid: '1302589',
+            uratio: '67%',
+            arate: '36%'
+          },
+          {
+            id: 29,
+            names: '离心机',
+            brand: '力辰科技（lichen）',
+            conid: '已使用',
+            num: '2',
+            roomnames: '生物实验室',
+            facid: 'SW15201705279',
+            factime: '2017-05-27',
+            proid: '78126',
+            supid: '1209831',
+            uratio: '55%',
+            arate: '50%'
+          },
+
+          {
+            id: 30,
+            names: '验钞机',
+            brand: '科密B1+',
+            conid: '已使用',
+            num: '2',
+            roomnames: '会计实验室',
+            facid: 'KJ25201911268',
+            factime: '2019-11-26',
+            proid: '58186',
+            supid: '1308719',
+            uratio: '24%',
+            arate: '6%'
+          },
         ],
 
       },
@@ -772,31 +772,31 @@
       });
 
       $('#exportExcels').on('click', function () {
- 
-         var data = JSON.parse(localStorage.getItem('devicedata'));
- 
-         data = excel.filterExportData(data, [
-           'id',
-           'names',
-           'brand',
-           'conid',
-           'num',
-           'roomnames',
-           'facid',
-           'factime',
-           'proid',
-           'supid',
-           'arate'
-         ]);
-         data.unshift({
-           id: "设备编号", names: '设备名称', brand: '品牌型号', conid: '设备状态编号', num: '设备数量',
-           roomnames: '实验室名称', facid: '出厂编号', factime: '出厂日期', proid: '生产厂商编号', supid: '供应商编号', arate: '损耗率'
-         });
- 
-         var timestart = Date.now();
-         excel.exportExcel(data, '实验室设备损耗率报告' + '.xlsx', 'xlsx');
- 
-       }); 
+
+        var data = JSON.parse(localStorage.getItem('devicedata'));
+
+        data = excel.filterExportData(data, [
+          'id',
+          'names',
+          'brand',
+          'conid',
+          'num',
+          'roomnames',
+          'facid',
+          'factime',
+          'proid',
+          'supid',
+          'arate'
+        ]);
+        data.unshift({
+          id: "设备编号", names: '设备名称', brand: '品牌型号', conid: '设备状态编号', num: '设备数量',
+          roomnames: '实验室名称', facid: '出厂编号', factime: '出厂日期', proid: '生产厂商编号', supid: '供应商编号', arate: '损耗率'
+        });
+
+        var timestart = Date.now();
+        excel.exportExcel(data, '实验室设备损耗率报告' + '.xlsx', 'xlsx');
+
+      });
     });
 
   </script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
   <title>高校实验室管理平台 </title>
   <meta name="keywords" content="高校实验室管理平台" />
@@ -20,7 +21,7 @@
 
 </head>
 
-<body class="index" >
+<body class="index">
   <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
       <div class="layui-logo">
@@ -70,7 +71,7 @@
       </ul>
 
       <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li> 
+        <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li>
         <li class="layui-nav-item"><a href="./index.html"><i class="iconfont icon-shouye"></i>主页</a></li>
         <li class="layui-nav-item"><a href="./login.html">退出</a></li>
       </ul>
@@ -86,96 +87,57 @@
             </div>
           </div>
         </div>
+        <div id="news">
           <div class="layui-col-md3 new">
-          <h3><a href="javascript:;">新闻<span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
-          <ul class="news">
-            <a href="./files/news/details.html" v-for="item in goods" key="index">
-            <li>
-              <h4 class="hidden2"></h4>
-              <span>2019/4/20</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">电子信息工程学术导师制度初见成效，实验室召开相关会议</h4>
-              <span>2019/5/26</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">实验室召开《信息技术，基于传感器网络的工业设备点检系统》</h4>
-              <span>2019/5/28</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2"><a href="javascript:;">【新时代新气象新作为】我校两个教育部重点首演时通过评估</a></h4>
-              <span>2019/5/29</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">高校科技成果转化工作培训会召开环境科学研究所在碳量子点研究中取得新进展</a></h4>
-              <span>2019/6/1</span>
-            </li>
-            </a>
-           <!--  <li>
-              <h4 class="hidden2">环境科学研究所在碳量子点研究中取得新进展</h4>
-              <span>2019/6/10</span>
-            </li>
-            <li>
-              <h4 class="hidden2">实验室召开相关会议，讨论实验室相关事宜</h4>
-              <span>2019/6/15</span>
-            </li>
-            <li>
-              <h4 class="hidden2">实验室《信息技术，基于传感器网络的工业设备点检系统》</h4>
-              <span>2019/6/28</span>
-            </li>
-            <li>
-              <h4 class="hidden2">我校两个教育部重点首演时通过评估</h4>
-              <span>2019/6/29</span>
-            </li>
- -->
-          </ul>
+            <h3><a href="javascript:;">新闻<span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+            <ul class="news">
+              <a :href="'./files/news/details.html?id='+item.id" v-for="(item,index) in news" key="index">
+                <li>
+                  <h4 class="hidden2">{{item.title}}</h4>
+                  <span>{{item.time}}</span>
+                </li>
+              </a>
+            </ul>
           </div>
         </div>
-          <div class="layui-row">
-        <div class="layui-col-md9 zd" >
+      </div>
+      <div class="layui-row">
+        <div class="layui-col-md9 zd">
           <h3><a href="javascript:;">实验制度 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
           <div class="img imgl">
             <img src="./assets/images/1-1.png" alt="">
           </div>
           <ul class="news news1">
-            <a href="./files/regime/system.html" >
-            <li>
-              <h5 class="hidden1"></h5>
-            </li>
+            <a href="./files/regime/system.html?id=1">
+              <li>
+                <h5 class="hidden1">实验室最新使用制度</h5>
+              </li>
             </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">实验规章制度</h5>
-            </li>
+            <a href="./files/regime/system.html?id=2">
+              <li>
+                <h5 class="hidden1">实验规章制度</h5>
+              </li>
             </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">学生实验守则</h5>
-            </li>
+            <a href="./files/regime/system.html?id=3">
+              <li>
+                <h5 class="hidden1">学生实验守则</h5>
+              </li>
             </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">实验器材借用规则</h5>
-            </li>
+            <a href="./files/regime/system.html?id=4">
+              <li>
+                <h5 class="hidden1">实验器材借用规则</h5>
+              </li>
             </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">实验室器材维修流程</h5>
-            </li>
+            <a href="./files/regime/system.html?id=5">
+              <li>
+                <h5 class="hidden1">实验室器材维修流程</h5>
+              </li>
             </a>
           </ul>
         </div>
-            <div class="layui-col-md3" >
-            <h3>项目概览</h3>
-            <!--  <form action="" class="layui-form">
+        <div class="layui-col-md3">
+          <h3>项目概览</h3>
+          <!--  <form action="" class="layui-form">
               <div class="layui-form-item"><label class="layui-icon  layui-icon-username  "></label>
                 <input type="text" name="username" lay-verify="required|username" autocomplete="off" placeholder="请输入用户名"
                   class="layui-input">
@@ -195,71 +157,71 @@
 
               </div>
             </form> -->
-            <div class="echarts" style="width: 100%; height: 240px; padding: 2% 0;"></div>
-          </div>
-      <div class="layui-row">
-        <div class="layui-col-md9 ky">
-          <h3><a href="javascript:;">教学科研 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
-          <div class="img imgr">
-            <img src="./assets/images/1-2.png" alt="">
-          </div>
-          <ul class="news news2">
-            <a href="./files/study/study.html">
-            <li>
-              <h5 class="hidden1">机械工程学院举行第一期辅导员工作研讨会。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">我校组织协办线上科技成果转化案例深度解析主题......</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">学校开展实验岗教师安全培训及危化品安全演练。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">学校召开提升综合实力工作安排部署会。</h5>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">校领导深入实验室随机检查实验室的爱护以及卫生......</h5>
-            </li>
-            </a>
-          </ul>
+          <div class="echarts" style="width: 100%; height: 240px; padding: 2% 0;"></div>
         </div>
-        <div class="layui-col-md3 gg">
-          <h3><a href="javascript:;">通知公告 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
-          <ul class="note">
-            <a href="./files/notice/notice.html" >
-            <li>
-              <img src="./assets/images/1-3.png" alt="">
-              <h4 class="hidden1"></h4>
-              <span>2019/4/20</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <img src="./assets/images/1-4.png" alt="">
-              <h4 class="hidden1">实验室最新使用制度</h4>
-              <span>2019/6/26</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <img src="./assets/images/1-5.png" alt="">
-              <h4 class="hidden1">计算机实验室使用制度说明</h4>
-              <span>2019/6/28</span>
-            </li>
-            </a>
-          </ul>
+        <div class="layui-row">
+          <div class="layui-col-md9 ky">
+            <h3><a href="javascript:;">教学科研 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+            <div class="img imgr">
+              <img src="./assets/images/1-2.png" alt="">
+            </div>
+            <ul class="news news2">
+              <a href="./files/study/study.html?id=1">
+                <li>
+                  <h5 class="hidden1">机械工程学院举行第一期辅导员工作研讨会。</h5>
+                </li>
+              </a>
+              <a href="./files/study/study.html?id=2">
+                <li>
+                  <h5 class="hidden1">我校组织协办线上科技成果转化案例深度解析主题......</h5>
+                </li>
+              </a>
+              <a href="./files/study/study.html?id=3">
+                <li>
+                  <h5 class="hidden1">学校开展实验岗教师安全培训及危化品安全演练。</h5>
+                </li>
+              </a>
+              <a href="./files/study/study.html?id=4">
+                <li>
+                  <h5 class="hidden1">学校召开提升综合实力工作安排部署会。</h5>
+                </li>
+              </a>
+              <a href="./files/study/study.html?id=5">
+                <li>
+                  <h5 class="hidden1">校领导深入实验室随机检查实验室的爱护以及卫生......</h5>
+                </li>
+              </a>
+            </ul>
+          </div>
+          <div class="layui-col-md3 gg">
+            <h3><a href="javascript:;">通知公告 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+            <ul class="note">
+              <a href="./files/notice/notice.html?id=1">
+                <li>
+                  <img src="./assets/images/1-3.png" alt="">
+                  <h4 class="hidden1">实验室最新使用制度</h4>
+                  <span>2019/4/20</span>
+                </li>
+              </a>
+              <a href="./files/notice/notice.html?id=2">
+                <li>
+                  <img src="./assets/images/1-4.png" alt="">
+                  <h4 class="hidden1">实验室最新使用制度</h4>
+                  <span>2019/6/26</span>
+                </li>
+              </a>
+              <a href="./files/notice/notice.html?id=3">
+                <li>
+                  <img src="./assets/images/1-5.png" alt="">
+                  <h4 class="hidden1">计算机实验室使用制度说明</h4>
+                  <span>2019/6/28</span>
+                </li>
+              </a>
+            </ul>
 
+          </div>
         </div>
       </div>
-        </div>
     </div>
   </div>
   <script src="./assets/js/layui_exts/layui.all.js"></script>
@@ -319,53 +281,66 @@
   </script>
   <script>
     new Vue({
-        el:"#app",
-        data:{
-          goods:null,
-        },
-        methods:{
-          indexgoods(){
-            let url="http://118.89.235.32/gift/public/index.php/api/indexgoods";
-            axios({
-              url,
-              method:"get",
-            }).then(res=>{
-              console.log(res);
-              this.goods=res.data.data;
-              console.log(this.goods);
-            }).catch(err=>{
-              console.log(err);
-            })
-          }
-        },
-        mounted(){
-          this.indexgoods();
+      el: "#news",
+      data: {
+        news: null,
+        time: {}
+      },
+      methods: {
+        indexnews() {
+          let url = "http://192.168.0.117:8080/lab/allnewslatestfive";
+          axios({
+            url,
+            method: "get",
+          }).then(res => {
+            this.news = res.data.data;
+            this.news.map(ele=>{
+              ele.time=new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time=batchTime;
+              return ele;
+            });
+          }).catch(err => {
+            console.log(err);
+          })
         }
+      },
+      mounted() {
+        this.indexnews();
+      }
     })
     new Vue({
-        el:"#news",
-        data:{
-          news:null,
-        },
-        methods:{
-          indexgoods(){
-            let url="http://118.89.235.32/gift/public/index.php/api/indexgoods";
-            axios({
-              url,
-              method:"get",
-            }).then(res=>{
-              console.log(res);
-              this.news=res.data.data;
-              console.log(this.news);
-            }).catch(err=>{
-              console.log(err);
-            })
-          }
-        },
-        mounted(){
-          this.indexgoods();
+      el: "#system",
+      data: {
+        news: null,
+        time: {}
+      },
+      methods: {
+        indexsystem() {
+          let url = "http://192.168.0.117:8080/lab/allregime";
+          axios({
+            url,
+            method: "get",
+          }).then(res => {
+            console.log(res);
+            this.news = res.data.data;
+            console.log(this.news);
+            this.news.map(ele=>{
+              ele.time=new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time=batchTime;
+              return ele;
+            });
+          }).catch(err => {
+            console.log(err);
+          })
         }
+      },
+      mounted() {
+        this.indexsystem();
+      }
     })
+    
   </script>
 </body>
 
