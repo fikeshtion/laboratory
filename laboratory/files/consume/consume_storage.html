@@ -25,14 +25,8 @@
             padding: 2%;
             /* font-family: '华文新魏'; */
         }
-
-        #demo8 {
-            margin: 0 auto;
-        }
-
-        .demo {
-            width: 600px;
-            margin: 0 auto;
+        .layui-laypage-btn{
+            margin-top: 0;
         }
     </style>
 </head>
@@ -97,21 +91,10 @@
         </div>
         <div id="app">
             <div class="layui-form">
-                <table class="layui-table">
-                    <thead>
-                        <tr>
-                            <th v-for="item in data" key="id">{{item.names}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-                
+                <div id="table">
+                    <table class="layui-hide" id="test" lay-filter="test"></table>
+                </div>
             </div>
-        </div>
-        <div class="demo">
-            <div id="demo8"></div>
         </div>
     </div>
     <script src="../../assets/js/vue/vue.js"></script>
@@ -121,16 +104,44 @@
     <!--再加载插件-->
     <script src="../../assets/js/layui_exts/excel.js"></script>
     <script>
-        layui.use('laypage', function () {
+        layui.use(['table', 'laypage'], function () {
+            var table = layui.table;
             var laypage = layui.laypage;
-
-            //执行一个laypage实例
-            laypage.render({
-                elem: 'demo8',
+            table.render({
+                elem: '#test'
+                , url: 'http://192.168.0.117:8080/lab/allnews',
+                method: "get",
                 count: 50,
-                limit: 10,
-                layout: ['limit', 'prev', 'page', 'next'],
-                jump: function (obj, first) {
+                page: true,
+                cols: [[
+                    { field: 'id', title: '购置编号' }
+                    , { field: 'consume', title: '购置名称' }
+                    , { field: 'num', title: '购置数量' }
+                    , { field: 'date', title: '购置日期' }
+                    , { field: 'applicant', title: '购置申请人' }
+                ]],
+                response: {
+                    statusName: 'code' //数据状态的字段名称，默认：code
+                    , statusCode: 200 //成功的状态码，默认：0
+                    , msgName: 'message' //状态信息的字段名称，默认：msg
+                    , countName: 'count' //数据总数的字段名称，默认：count
+                    , dataName: 'data' //数据列表的字段名称，默认：data
+                },
+
+                // done: function (res, curr, count) {
+                //     //如果是异步请求数据方式，res即为你接口返回的信息。
+                //     //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                //     console.log(res.data);
+
+                //     //得到当前页码
+                //     console.log(curr);
+                //     console.log(count);
+                // }
+            });
+            laypage.render({
+                elem: 'test'
+                , count: 70 //数据总数，从服务端得到
+                , jump: function (obj, first) {
                     //obj包含了当前分页的所有参数，比如：
                     console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
                     console.log(obj.limit); //得到每页显示的条数
@@ -142,21 +153,6 @@
                 }
             });
         });
-    </script>
-
-    <script>
-        let vm = new Vue({
-            el: '#app',
-            data: {
-                data: [
-                    { id: 1, names: '购置编号' },
-                    { id: 2, names: '购置名称' },
-                    { id: 3, names: '购置数量' },
-                    { id: 4, names: '购置日期' },
-                    { id: 5, names: '购置申请人' },
-                ],
-            },
-        })
     </script>
 </body>
 

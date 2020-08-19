@@ -34,6 +34,9 @@
       width: 600px;
       margin: 0 auto;
     }
+    .layui-laypage-btn{
+            margin-top: 0;
+        }
   </style>
 </head>
 
@@ -99,22 +102,8 @@
         hello
       </div>
       <div class="layui-col-md8">
-        <div id="app">
-          <div class="layui-form">
-            <table class="layui-table">
-              <thead>
-                <tr >
-                  <th v-for="item in data" >{{item.names}}</th>
-                </tr>
-              </thead>
-              <tbody>
-
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="demo">
-          <div id="demo8"></div>
+        <div id="table" >
+          <table class="layui-hide" id="test" lay-filter="test"></table>
         </div>
         <div class="table-bottom">
           <button type="button" lay-submit="" class="layui-btn d" id="exportExcel" name="exportExcel"
@@ -130,47 +119,47 @@
   <!-- <script src="./js/jquery-3.4.1.js"></script> -->
   <!--再加载插件-->
   <script src="../../assets/js/layui_exts/excel.js"></script>
+
   <script>
-    layui.use('laypage', function () {
-      var laypage = layui.laypage;
+    layui.use('table', function () {
+        var table = layui.table;
+        table.render({
+            elem: '#test'
+            , url: 'http://192.168.0.117:8080/lab/allnews',
+            method: "get",
+            count: 50,
+            page: true,
+            cols: [[
+                { field: 'id', title: '实验室编号' }
+                , { field: 'experiment', title: '实验项目' }
+                , { field: 'num', title: '实验人数' }
+                , { field: 'date', title: '预约日期' }
+                , { field: 'title', title: '预约设备' }
+                , { field: 'time_start', title: '预约开始时间',width:120 }
+                , { field: 'time_stop', title: '预约结束时间',width:120 }
+                , { field: 'faculty', title: '所属系别' }
+                , { field: 'responsibility', title: '负责人' }
+                , { field: 'status', title: '实验状态' }
+            ]],
+            response: {
+                statusName: 'code' //数据状态的字段名称，默认：code
+                , statusCode: 200 //成功的状态码，默认：0
+                , msgName: 'message' //状态信息的字段名称，默认：msg
+                , countName: 'count' //数据总数的字段名称，默认：count
+                , dataName: 'data' //数据列表的字段名称，默认：data
+            },
 
-      //执行一个laypage实例
-      laypage.render({
-        elem: 'demo8',
-        count: 50,
-        limit: 10,
-        layout: ['limit', 'prev', 'page', 'next'],
-        jump: function (obj, first) {
-          //obj包含了当前分页的所有参数，比如：
-          console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-          console.log(obj.limit); //得到每页显示的条数
+            done: function (res, curr, count) {
+                //如果是异步请求数据方式，res即为你接口返回的信息。
+                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                console.log(res.data);
 
-          //首次不执行
-          if (!first) {
-            //do something
-          }
-        }
-      });
+                //得到当前页码
+                console.log(curr);
+                console.log(count);
+            }
+        });
     });
-  </script>
-
-  <script>
-    let vm = new Vue({
-      el: '#app',
-      data: {
-        data: [
-          { id: 1, names: '实验室编号' },
-          { id: 2, names: '实验项目' },
-          { id: 3, names: '实验人数' },
-          { id: 4, names: '预约日期' },
-          { id: 5, names: '预约设备' },
-          { id: 6, names: '预约时间段' },
-          { id: 7, names: '所属系别' },
-          { id: 8, names: '负责人' },
-          { id: 9, names: '实验状态' },
-        ],
-      },
-    })
   </script>
 </body>
 
