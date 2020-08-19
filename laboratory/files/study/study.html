@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../../assets/css/arrow.css">
   <link rel="icon" href="../../assets/images/icon.png">
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_1842343_yukudkn3aw.css">
-  
+
 </head>
 
 <body>
@@ -30,45 +30,45 @@
       </a>
       <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
         <li class="layui-nav-item">
-            <a href="javascript:;">设备</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../device/device.html">设备信息查看</a></dd>
-                <dd><a href="../device/labInformation.html">项目信息</a></dd>
-                <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
-                <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
-            </dl>
+          <a href="javascript:;">设备</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../device/device.html">设备信息查看</a></dd>
+            <dd><a href="../device/labInformation.html">项目信息</a></dd>
+            <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
+            <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">耗材</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
-                <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
-                <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
-                <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
-            </dl>
+          <a href="javascript:;">耗材</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
+            <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
+            <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
+            <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">预约</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
+          <a href="javascript:;">预约</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
 
-            </dl>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">项目</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../project/project-science.html">实验项目</a></dd>
-                <dd><a href="javascript:;">教学资源</a></dd>
-            </dl>
+          <a href="javascript:;">项目</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../project/project-science.html">实验项目</a></dd>
+            <dd><a href="javascript:;">教学资源</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">系统</a>
-            <dl class="layui-nav-child">
-                <dd><a href="javascript:;">用户信息</a></dd>
-                <dd><a href="./system-password.html">密码修改</a></dd>
-            </dl>
+          <a href="javascript:;">系统</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">用户信息</a></dd>
+            <dd><a href="./system-password.html">密码修改</a></dd>
+          </dl>
         </li>
-    </ul>
+      </ul>
 
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li>
@@ -76,58 +76,142 @@
         <li class="layui-nav-item"><a href="../../login.html">退出</a></li>
       </ul>
     </div>
-    <div class="laybody" >
-      <div class="layui-row wtx-layui">
-        <div class="layui-col-md12 wtx-arrow">
-          <h2>主页 /科学教研 <span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
-         
-          <h1>机械工程学院举行第一期辅导员工作研讨会</h1>
-          <hr class="wtx-hr"></hr>
-          <h4>信息来源：教务处   文字：李楠    时间：2020-06-02 </h4>
-          <hr>
+    <div id="studyid">
+      <div class="laybody">
+        <div class="layui-row wtx-layui">
+          <div class="layui-col-md12 wtx-arrow">
+            <h2>主页 /科学教研 <span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
+
+            <h1>{{studyid.title}}</h1>
+            <hr class="wtx-hr">
+            </hr>
+            <h4>信息来源：{{studyid.informationSource}} 姓名：{{studyid.author}} 时间：{{time}}</h4>
+            <hr>
+          </div>
         </div>
+        <div class="layui-row">
+          <div class="layui-col-md12 wtx-txt">
+            <p>{{studyid.content}}</p>
+          </div>
+        </div>
+        <div class="layui-row layui-col-space30 wtx-foot">
+          <div class="layui-col-md4">
+            <div class="wtx-ig">
+              <img src="../../assets/images/study1 (2).jpg" alt="">
+            </div>
+          </div>
+          <div class="layui-col-md4">
+            <div class="wtx-ig">
+              <img src="../../assets/images/study1.jpg" alt="">
+            </div>
+          </div>
+          <div class="layui-col-md4">
+            <div class="wtx-ig">
+              <img src="../../assets/images/study2.jpg" alt="">
+            </div>
+          </div>
+        </div>
+        <a href="./study.html?id=1">
+          <p style="color:#06a875;margin-left: 60px;">下一篇：我校组织协办线上科技成果转化案例深度解析主题......</p>
+        </a>
       </div>
-      <div class="layui-row">
-        <div class="layui-col-md12 wtx-txt">
-           <p>为进一步加强辅导员队伍建设，提高全体辅导员的思想政治教育工作水平、业务素质和工作能力，2020年6月8日下午3时，机械工程学院在德怀楼410会议室举行第一期辅导员工作研讨会，三名辅导员老师结合自己对相关专项工作领域的理论学习与多年实践工作经验，现场进行理论内容宣讲与实践经验分享。研讨会由院党委副书记李秀玲老师主持，全体辅导员老师参会。</p>
-        
-            <p>学生科科长王子威老师首先进行分享，本期他的主讲题目是创新创业教育。王子威老师通过阶段性的理论学习，找到了目前专项工作中存在的问题，思考后提出如何在下一阶段的工作中将双创教育与专业教育相融合，开辟大学生创新创业教育的新路径。</p>
-            <p>院团委书记王瑾老师随后进行分享。她围绕新时代大学生爱国主义教育相关学术研究内容与实践教育经验展开分享。梳理了一段时间文献学习后的心得感悟，结合团学工作的实践心得特别是疫情期间学生相关爱国主义教育开展情况进行内容分享。王瑾老师表示，疫情让我们看到了社会主义制度的优越性，爱国主义教育将是下阶段团学工作的重点，自己会不断更新理论知识，并将理论学习固化为研究成果且付诸实践。</p>
-            <p>苗慧老师进行题为新时代背景下高校研究生党支部建设的多维探赜相关研讨内容分享。苗慧老师的分享围绕国家、社会、高校、个人等四个维度审视当前高校研究生党建工作面临的形势与新挑战，旨在探索加强研究生党支部建设的新路径，提升研究生党支部建设的实效性。</p>
-            <p>通过本次研讨会，机械工程学院全体辅导员老师学习了相关工作领域的前沿理论，汲取了优秀思政教育工作经验。系列研讨会将延续5期，全体辅导员老师会结合自己的理论学习与实践经验进行相关专项工作主题分享，对提升自身理论学习水平、业务工作能力与创新能力有很大帮助。</p>
-           
-          </div>
-      </div>
-       <div class="layui-row layui-col-space30 wtx-foot">
-        <div class="layui-col-md4">
-          <div class="wtx-ig">
-            <img src="../../assets/images/study1 (2).jpg" alt="">
-          </div>
-        </div>
-        <div class="layui-col-md4">
-          <div class="wtx-ig">
-            <img src="../../assets/images/study1.jpg" alt="">
-          </div>
-        </div>
-        <div class="layui-col-md4">
-          <div class="wtx-ig">
-            <img src="../../assets/images/study2.jpg" alt="">
-          </div>
-        </div>
-      
-      </div> 
-      <a href="./study.html?id=1"><p style="color:#06a875;margin-left: 60px;">下一篇：我校组织协办线上科技成果转化案例深度解析主题......</p></a>
     </div>
+
   </div>
   <script src="../../assets/js/layui_exts/layui.all.js"></script>
- 
+  <script src="../../assets/js/vue/axios.js"></script>
+  <script src="../../assets/js/vue/vue.min.js"></script>
   <script>
     //JavaScript代码区域
     layui.use('element', function () {
-        var element = layui.element;
-
+      var element = layui.element;
     });
-</script>
+    function getAllUrlParams(url) {
+      // 用JS拿到URL，如果函数接收了URL，那就用函数的参数。如果没传参，就使用当前页面的URL
+      var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+      // 用来存储我们所有的参数
+      var obj = {};
+      // 如果没有传参，返回一个空对象
+      if (!queryString) {
+        return obj;
+      }
+      // stuff after # is not part of query string, so get rid of it
+      queryString = queryString.split('#')[0];
+      // 将参数分成数组
+      var arr = queryString.split('&');
+      for (var i = 0; i < arr.length; i++) {
+        // 分离成key:value的形式
+        var a = arr[i].split('=');
+        // 将undefined标记为true
+        var paramName = a[0];
+        var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+        // 如果调用对象时要求大小写区分，可删除这两行代码
+        paramName = paramName.toLowerCase();
+        if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+        // 如果paramName以方括号结束, e.g. colors[] or colors[2]
+        if (paramName.match(/\[(\d+)?\]$/)) {
+          // 如果paramName不存在，则创建key
+          var key = paramName.replace(/\[(\d+)?\]/, '');
+          if (!obj[key]) obj[key] = [];
+          // 如果是索引数组 e.g. colors[2]
+          if (paramName.match(/\[\d+\]$/)) {
+            // 获取索引值并在对应的位置添加值
+            var index = /\[(\d+)\]/.exec(paramName)[1];
+            obj[key][index] = paramValue;
+          } else {
+            // 如果是其它的类型，也放到数组中
+            obj[key].push(paramValue);
+          }
+        } else {
+          // 处理字符串类型
+          if (!obj[paramName]) {
+            // 如果如果paramName不存在，则创建对象的属性
+            obj[paramName] = paramValue;
+          } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+            // 如果属性存在，并且是个字符串，那么就转换为数组
+            obj[paramName] = [obj[paramName]];
+            obj[paramName].push(paramValue);
+          } else {
+            // 如果是其它的类型，还是往数组里丢
+            obj[paramName].push(paramValue);
+          }
+        }
+      }
+      return obj;
+    }
+    console.log(getAllUrlParams().id);
+    var nid = getAllUrlParams().id;//获取地址中的参数
+    new Vue({
+      el: "#studyid",
+      data: {
+        studyid: {},
+        time: {}
+
+      },
+      methods: {
+        newsgoods() {
+          let url = "http://192.168.0.117:8080/lab/findstudybyid/" + nid;
+          axios({
+            url,
+            method: "post",
+          }).then(res => {
+            console.log(res);
+            this.studyid = res.data.data;
+            let time = res.data.data.time;
+            let d = new Date(time);
+            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+            this.time = batchTime;
+
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+      },
+      mounted() {
+        this.newsgoods();
+      }
+    })
+  </script>
 </body>
 
 </html>
