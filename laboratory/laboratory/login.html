@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
-  <title>高校实验室管理平台 </title>
+  <title>高校实验室管理平台</title>
   <meta name="keywords" content="高校实验室管理平台" />
   <meta name="description" content="高校实验室管理平台" />
   <meta charset="utf-8">
@@ -12,67 +13,68 @@
   <link rel="stylesheet" href="./assets/css/layui.css">
   <!-- <link rel="stylesheet" href="./css/monitaring.css"> -->
   <link rel="stylesheet" href="./assets/css/login.css">
-  <link rel="icon" href="./assets/images/icon.png">
-  <link rel="stylesheet" href="./assets/css/icon.css">
-  <script src="./assets/js/jQuery/jquery-3.4.1.js"></script>
-  <script src="./assets/js/layui_exts/echarts.min.js"></script>
-  <script src="./assets/js/index.js"></script>
-
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1842343_yukudkn3aw.css">
+ <link rel="icon" href="./assets/images/icon.png">
 </head>
 
-<body class="index" >
+<body>
   <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
+     
       <div class="layui-logo">
         <img src="./assets/images/logo.png" alt="">
         高校实验室管理平台
       </div>
-      <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
+
+      <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;" id="slide">
         <li class="layui-nav-item">
           <a href="javascript:;">设备</a>
           <dl class="layui-nav-child">
-            <dd><a href="./files/device/device.html">设备信息查看</a></dd>
-            <dd><a href="./files/device/labInformation.html">项目信息</a></dd>
-            <dd><a href="./files/device/monitaring.html">实验状态监控</a></dd>
-            <dd><a href="./files/device/deviceInformation.html">智能分析</a></dd>
+            <dd><a href="javascript:;">设备信息查看</a></dd>
+            <dd><a href="javascript:;">项目信息</a></dd>
+            <dd><a href="javascript:;">实验状态监控</a></dd>
+            <dd><a href="javascript:;">智能分析</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">耗材</a>
           <dl class="layui-nav-child">
-            <dd><a href="./files/consume/consume_inform.html">基本资料</a></dd>
-            <dd><a href="./files/consume/consume_storage.html">申请购置</a></dd>
-            <dd><a href="./files/consume/consume-custudy.html">保管领用</a></dd>
-            <dd><a href="./files/consume/consume-norm.html">管理标准</a></dd>
+            <dd><a href="javascript:;">基本资料</a></dd>
+            <dd><a href="javascript:;">购置与入库</a></dd>
+            <dd><a href="javascript:;">保管和领用</a></dd>
+            <dd><a href="javascript:;">制定严格标准</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">预约</a>
           <dl class="layui-nav-child">
-            <dd><a href="./files/arrange/arrange-page.html">预约安排</a></dd>
+            <dd><a href="javascript:;">预约与安排</a></dd>
 
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">项目</a>
           <dl class="layui-nav-child">
-            <dd><a href="./files/project/project-science.html">实验项目</a></dd>
-            <dd><a href="javascript:;">教学资源</a></dd>
+            <dd><a href="javascript:;">科学项目管理</a></dd>
+            <dd><a href="javascript:;">核查项目管理</a></dd>
+
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">系统</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">用户信息</a></dd>
-            <dd><a href="./files/system/system-password.html">密码修改</a></dd>
+            <dd><a href="javascript:;">角色管理</a></dd>
+            <dd><a href="javascript:;">密码修改</a></dd>
+            <dd><a href="javascript:;">账号管理</a></dd>
+            <dd><a href="javascript:;">用户审计</a></dd>
           </dl>
         </li>
       </ul>
 
       <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li> 
-        <li class="layui-nav-item"><a href="./index.html"><i class="iconfont icon-shouye"></i>主页</a></li>
-        <li class="layui-nav-item"><a href="./login.html">退出</a></li>
+        <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li>
+        <!-- <li class="layui-nav-item"><a href="./login.html"><i class="iconfont icon-shouye"></i>主页</a></li> -->
+        <!-- <li class="layui-nav-item"><a href="./login.html">退出</a></li> -->
       </ul>
     </div>
     <div class="laybody">
@@ -86,12 +88,12 @@
             </div>
           </div>
         </div>
-          <div class="layui-col-md3 new">
-          <h3><a href="javascript:;">新闻<span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+        <div class="layui-col-md3 new">
+          <h3>新闻 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
           <ul class="news">
-            <a href="./files/news/details.html" v-for="item in goods" key="index">
+            <a href="javascript:;">
             <li>
-              <h4 class="hidden2"></h4>
+              <h4 class="hidden2">高校疫情期间在线教学及国际慕课建设线上研讨会召开</h4>
               <span>2019/4/20</span>
             </li>
           </a>
@@ -135,78 +137,78 @@
               <h4 class="hidden2">我校两个教育部重点首演时通过评估</h4>
               <span>2019/6/29</span>
             </li>
-            -->
+ -->
           </ul>
-          </div>
         </div>
-          <div class="layui-row">
-        <div class="layui-col-md9 zd" >
-          <h3><a href="javascript:;">实验制度 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+      </div>
+      <div class="layui-row">
+        <div class="layui-col-md9 zd">
+          <h3>实验制度 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
           <div class="img imgl">
             <img src="./assets/images/1-1.png" alt="">
           </div>
           <ul class="news news1">
-            <a href="./files/regime/system.html" >
+            <a href="javascript:;">
             <li>
-              <h5 class="hidden1"></h5>
+              <h5 class="hidden1">1.实验结束后必须检查水，电，门，窗等是否关闭。</h5>
             </li>
             </a>
             <a href="javascript:;">
             <li>
-              <h5 class="hidden1">实验规章制度</h5>
+              <h5 class="hidden1">2.使用实验的人员必须保持实验室及使用设备的清洁。</h5>
             </li>
             </a>
             <a href="javascript:;">
             <li>
-              <h5 class="hidden1">学生实验守则</h5>
+              <h5 class="hidden1">3.实验室设备未经许可不得外借。</h5>
             </li>
             </a>
             <a href="javascript:;">
             <li>
-              <h5 class="hidden1">实验器材借用规则</h5>
+              <h5 class="hidden1">4.设备使用采用使用者登记制度。</h5>
             </li>
             </a>
             <a href="javascript:;">
             <li>
-              <h5 class="hidden1">实验室器材维修流程</h5>
+              <h5 class="hidden1">5.易损设备损坏必须登记，使用人登记。</h5>
             </li>
             </a>
           </ul>
         </div>
-            <div class="layui-col-md3" >
-            <h3>项目概览</h3>
-            <!--  <form action="" class="layui-form">
-              <div class="layui-form-item"><label class="layui-icon  layui-icon-username  "></label>
-                <input type="text" name="username" lay-verify="required|username" autocomplete="off" placeholder="请输入用户名"
-                  class="layui-input">
+        <div class="layui-col-md3 form">
+          <form action="" class="layui-form">
+            <div class="layui-form-item"><label class="layui-icon  layui-icon-username  "></label>
+              <input type="text" name="username" lay-verify="required|username" autocomplete="off" placeholder="请输入用户名"
+                class="layui-input">
+            </div>
+            <div class="layui-form-item"><label class="layui-icon  layui-icon-password  "></label>
+              <div><input type="password" name="password" lay-verify="required|pass" placeholder="请输入密码"
+                  autocomplete="off" class="layui-input">
               </div>
-              <div class="layui-form-item"><label class="layui-icon  layui-icon-password  "></label>
-                <div><input type="password" name="password" lay-verify="required|pass" placeholder="请输入密码"
-                    autocomplete="off" class="layui-input">
-                </div>
-              </div>
-              <div class="pass">
-                <input type="checkbox" name="" title="记住密码" lay-skin="primary">
+            </div>
+            <div class="pass">
+              <input type="checkbox" name="" title="记住密码" lay-skin="primary">
 
-              </div>
-              <div class="layui-form-item btn">
-                <button class="layui-bg-default layui-btn layui-btn-fluid" lay-submit lay-filter="go">登录
-                </button>
+            </div>
+            <div class="layui-form-item btn">
+              <button class="layui-bg-default layui-btn layui-btn-fluid" lay-submit lay-filter="go">登录
+              </button>
 
-              </div>
-            </form> -->
-            <div class="echarts" style="width: 100%; height: 240px; padding: 2% 0;"></div>
-          </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
       <div class="layui-row">
         <div class="layui-col-md9 ky">
-          <h3><a href="javascript:;">教学科研 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+          <h3>教学科研 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
           <div class="img imgr">
             <img src="./assets/images/1-2.png" alt="">
           </div>
           <ul class="news news2">
-            <a href="./files/study/study.html">
+            <a href="javascript:;">
             <li>
-              <h5 class="hidden1">机械工程学院举行第一期辅导员工作研讨会。</h5>
+              <h5 class="hidden1">疫情期间线上教学及线上研讨会的召开。</h5>
             </li>
             </a>
             <a href="javascript:;">
@@ -232,23 +234,23 @@
           </ul>
         </div>
         <div class="layui-col-md3 gg">
-          <h3><a href="javascript:;">通知公告 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
+          <h3>通知公告</h3>
           <ul class="note">
-            <a href="./files/notice/notice.html" >
+            <a href="javascript:;">
             <li>
               <img src="./assets/images/1-3.png" alt="">
-              <h4 class="hidden1"></h4>
+              <h4 class="hidden1">实验室最新使用制度</h4>
               <span>2019/4/20</span>
             </li>
-          </a>
-          <a href="javascript:;">
+            </a>
+            <a href="javascript:;">
             <li>
               <img src="./assets/images/1-4.png" alt="">
-              <h4 class="hidden1">实验室最新使用制度</h4>
+              <h4 class="hidden1">最新化学设备借用制度</h4>
               <span>2019/6/26</span>
             </li>
-          </a>
-          <a href="javascript:;">
+            </a>
+            <a href="javascript:;">
             <li>
               <img src="./assets/images/1-5.png" alt="">
               <h4 class="hidden1">计算机实验室使用制度说明</h4>
@@ -256,17 +258,13 @@
             </li>
             </a>
           </ul>
-
         </div>
       </div>
-        </div>
     </div>
   </div>
   <script src="./assets/js/layui_exts/layui.all.js"></script>
-  <script src="./assets/js/vue/axios.js"></script>
-  <script src="./assets/js/vue/vue.min.js"></script>
-
   <script>
+
     layui.use(['layer', 'form', 'carousel', 'element'], function () {
 
       let { layer, form, $, carousel, element } = layui;
@@ -298,7 +296,9 @@
         password: '123456'
       }
       let s = localStorage.setItem('user', JSON.stringify(user));
+
       form.on('submit(go)', function (data) {
+
         let storage = window.localStorage.getItem('user');
         let storages = JSON.parse(storage);
         let username = storages['username'];
@@ -315,57 +315,11 @@
         return false;//阻止action动作
 
       })
+      $("#slide dd").on('click', function () {
+        layer.msg('请先登录');
+      });
+
     });
-  </script>
-  <script>
-    new Vue({
-        el:"#app",
-        data:{
-          goods:null,
-        },
-        methods:{
-          indexgoods(){
-            let url="http://118.89.235.32/gift/public/index.php/api/indexgoods";
-            axios({
-              url,
-              method:"get",
-            }).then(res=>{
-              console.log(res);
-              this.goods=res.data.data;
-              console.log(this.goods);
-            }).catch(err=>{
-              console.log(err);
-            })
-          }
-        },
-        mounted(){
-          this.indexgoods();
-        }
-    })
-    new Vue({
-        el:"#news",
-        data:{
-          news:null,
-        },
-        methods:{
-          indexgoods(){
-            let url="http://118.89.235.32/gift/public/index.php/api/indexgoods";
-            axios({
-              url,
-              method:"get",
-            }).then(res=>{
-              console.log(res);
-              this.news=res.data.data;
-              console.log(this.news);
-            }).catch(err=>{
-              console.log(err);
-            })
-          }
-        },
-        mounted(){
-          this.indexgoods();
-        }
-    })
   </script>
 </body>
 
