@@ -99,7 +99,7 @@
           <a href="javascript:;">系统</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">用户信息</a></dd>
-            <dd><a href="./system-password.html">密码修改</a></dd>
+            <dd><a href="../system/system-password.html">密码修改</a></dd>
           </dl>
         </li>
       </ul>
@@ -121,25 +121,7 @@
             <button type="button" lay-submit="" class="layui-btn d" id="exportExcel" name="exportExcel">
               <i class="layui-icon"></i>导出实验室设备信息报告</button>
 
-            <nav aria-label="Page navigation">
-              <ul class="pagination">
-                <li class="disabled" style="display: none;">
-                  <span>
-                    <span aria-hidden="true">&laquo;</span>
-                  </span>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li style="display: none;">
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            
           </div>
           <!-- <div class="echarts"></div> -->
         </div>
@@ -160,19 +142,17 @@
         var table = layui.table;
         table.render({
             elem: '#test'
-            , url: 'http://192.168.0.117:8080/lab/allnews',
+            , url: 'http://192.168.0.117:8080/lab/all',
             method: "get",
             count: 50,
             page: true,
             cols: [[
-                { field: 'id', title: '实验编号' }
-                , { field: 'experiment', title: '实验名称' }
-                , { field: 'num', title: '实验状态' }
-                , { field: 'date', title: '所属院系' }
-                , { field: 'title', title: '所用设备' }
-                , { field: 'time_start', title: '指导老师',width:120 }
-                , { field: 'time_stop', title: '实验日期',width:120 }
-                , { field: 'faculty', title: '实验时间段' }
+                { field: 'laboratory_id', title: '设备编号' }
+                , { field: 'experimentName', title: '设备名称' }
+                , { field: 'num', title: '品牌型号' }
+                , { field: 'faculty', title: '设备状态' }
+                , { field: 'title', title: '设备数量' }
+                , { field: 'time_start', title: '实验室名称' }
             ]],
             response: {
                 statusName: 'code' //数据状态的字段名称，默认：code
@@ -182,15 +162,7 @@
                 , dataName: 'data' //数据列表的字段名称，默认：data
             },
 
-            done: function (res, curr, count) {
-                //如果是异步请求数据方式，res即为你接口返回的信息。
-                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-                console.log(res.data);
-
-                //得到当前页码
-                console.log(curr);
-                console.log(count);
-            }
+            
         });
     });
   </script>

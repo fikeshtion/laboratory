@@ -92,7 +92,7 @@
           <a href="javascript:;">系统</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">用户信息</a></dd>
-            <dd><a href="./system-password.html">密码修改</a></dd>
+            <dd><a href="../system/system-password.html">密码修改</a></dd>
           </dl>
         </li>
       </ul>
@@ -179,19 +179,21 @@
       var table = layui.table;
       table.render({
         elem: '#test'
-        , url: 'http://192.168.0.117:8080/lab/allnews',
+        , url: 'http://192.168.0.139:8080/lab/findAllExperimentProject',
         method: "get",
         count: 50,
         page: true,
+        limit:5,
+        limits:[5,10,15,20],
         cols: [[
           { field: 'id', title: '实验编号' }
-          , { field: 'experiment', title: '实验名称' }
-          , { field: 'num', title: '实验状态' }
-          , { field: 'date', title: '所属院系' }
-          , { field: 'title', title: '所用设备' }
-          , { field: 'time_start', title: '指导老师' }
-          , { field: 'time_stop', title: '实验日期' }
-          , { field: 'faculty', title: '实验时间段' }
+          , { field: 'experimentName', title: '实验名称' }
+          , { field: 'status', title: '实验状态' }
+          , { field: 'lfaculty', title: '所属院系' }
+          , { field: 'consumeName', title: '所用设备' }
+          , { field: 'lteacher', title: '指导老师' }
+          , { field: 'ldate', title: '实验日期' }
+          , { field: 'ltime', title: '实验时间段' }
         ]],
         response: {
           statusName: 'code' //数据状态的字段名称，默认：code
@@ -200,16 +202,15 @@
           , countName: 'count' //数据总数的字段名称，默认：count
           , dataName: 'data' //数据列表的字段名称，默认：data
         },
-
-        done: function (res, curr, count) {
-          //如果是异步请求数据方式，res即为你接口返回的信息。
-          //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-          console.log(res.data);
-
-          //得到当前页码
-          console.log(curr);
-          console.log(count);
-        }
+        parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.message, //解析提示文本
+                    "count": res.total, //解析数据长度
+                    "data": res.data //解析数据列表
+                };
+            },
+        
       });
     });
   </script>
