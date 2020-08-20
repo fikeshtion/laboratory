@@ -257,6 +257,7 @@
               ele.time = batchTime;
               return ele;
             });
+            // console.log(res);
           }).catch(err => {
             console.log(err);
           })
@@ -278,9 +279,9 @@
             url,
             method: "get",
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             this.system = res.data.data;
-            console.log(this.system);
+            // console.log(this.system);
 
           }).catch(err => {
             console.log(err);
@@ -303,9 +304,9 @@
             url,
             method: "get",
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             this.study = res.data.data;
-            console.log(this.study);
+            // console.log(this.study);
           }).catch(err => {
             console.log(err);
           })
@@ -327,16 +328,16 @@
             url,
             method: "get",
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             this.notice = res.data.data;
-            console.log(this.notice);
+            // console.log(this.notice);
             this.notice.map(ele => {
               ele.time = new Date(ele.time);
               let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
               ele.time = batchTime;
               return ele;
             });
-            console.log(res);
+            // console.log(res);
           }).catch(err => {
             console.log(err);
           })
