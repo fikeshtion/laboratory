@@ -89,58 +89,6 @@
         </div>
         <div id="news">
           <div class="layui-col-md3 new">
-<<<<<<< HEAD
-          <h3><a href="javascript:;">新闻<span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
-          <ul class="news">
-            <a href="./files/news/details.html" v-for="item in goods" key="index">
-            <li>
-              <h4 class="hidden2"></h4>
-              <span>2019/4/20</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">电子信息工程学术导师制度初见成效，实验室召开相关会议</h4>
-              <span>2019/5/26</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">实验室召开《信息技术，基于传感器网络的工业设备点检系统》</h4>
-              <span>2019/5/28</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2"><a href="javascript:;">【新时代新气象新作为】我校两个教育部重点首演时通过评估</a></h4>
-              <span>2019/5/29</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">高校科技成果转化工作培训会召开环境科学研究所在碳量子点研究中取得新进展</a></h4>
-              <span>2019/6/1</span>
-            </li>
-            </a>
-           <!--  <li>
-              <h4 class="hidden2">环境科学研究所在碳量子点研究中取得新进展</h4>
-              <span>2019/6/10</span>
-            </li>
-            <li>
-              <h4 class="hidden2">实验室召开相关会议，讨论实验室相关事宜</h4>
-              <span>2019/6/15</span>
-            </li>
-            <li>
-              <h4 class="hidden2">实验室《信息技术，基于传感器网络的工业设备点检系统》</h4>
-              <span>2019/6/28</span>
-            </li>
-            <li>
-              <h4 class="hidden2">我校两个教育部重点首演时通过评估</h4>
-              <span>2019/6/29</span>
-            </li>
-            -->
-          </ul>
-=======
             <h3><a href="javascript:;">新闻<span class="red">更多<i class="layui-icon">&#xe602;</i> </span></a></h3>
             <ul class="news">
               <a :href="'./files/news/details.html?id='+item.id"  v-for="(item,index) in news" key="index">
@@ -151,7 +99,6 @@
                 </li>
               </a>
             </ul>
->>>>>>> f6537207832d606e804a1420db24238a2dd3ecb7
           </div>
         </div>
       </div>
@@ -310,6 +257,7 @@
               ele.time = batchTime;
               return ele;
             });
+            // console.log(res);
           }).catch(err => {
             console.log(err);
           })
@@ -331,9 +279,9 @@
             url,
             method: "get",
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             this.system = res.data.data;
-            console.log(this.system);
+            // console.log(this.system);
 
           }).catch(err => {
             console.log(err);
@@ -356,9 +304,9 @@
             url,
             method: "get",
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             this.study = res.data.data;
-            console.log(this.study);
+            // console.log(this.study);
           }).catch(err => {
             console.log(err);
           })
@@ -380,16 +328,16 @@
             url,
             method: "get",
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             this.notice = res.data.data;
-            console.log(this.notice);
+            // console.log(this.notice);
             this.notice.map(ele => {
               ele.time = new Date(ele.time);
               let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
               ele.time = batchTime;
               return ele;
             });
-            console.log(res);
+            // console.log(res);
           }).catch(err => {
             console.log(err);
           })

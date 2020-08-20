@@ -20,15 +20,19 @@
         body {
             background-color: #fff;
         }
-        #table{
+
+        #table {
             padding: 2%;
-            
+        }
+
+        .layui-laypage-btn {
+            margin-top: 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="layui-layout layui-layout-admin" >
+    <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
             <a href="../../index.html">
                 <div class="layui-logo">
@@ -85,10 +89,10 @@
                 <li class="layui-nav-item"><a href="../../login.html">退出</a></li>
             </ul>
         </div>
-        <div id="table" >
+        <div id="table">
             <table class="layui-hide" id="test" lay-filter="test"></table>
         </div>
-        
+
     </div>
 
 </body>
@@ -96,43 +100,48 @@
 <script>
     layui.use('table', function () {
         var table = layui.table;
-
+        //     let limit=1;
+        //     let curr=2
+        // console.log(limit);
         table.render({
-            elem: '#test'
-            , url: 'http://192.168.0.117:8080/lab/allnews',
+            elem: '#test',
+            url: "http://192.168.0.117:8080/lab/allconsumecustodys",
             method: "get",
-            count: 50,
-            page: true, 
+            page: true,
+            limit: 5,
+            limits: [5, 10, 15, 20],
             cols: [[
-                { field: 'author', title: '用户名' }
-                , { field: 'content', title: '内容' }
-                , { field: 'informationSource', title: '信息来源' }
-                , { field: 'time', title: '事件' }
-                , { field: 'title', title: '标题' }
+                { field: 'recipient', title: '领用人' }
+                , { field: 'consumeName', title: '领用设备' }
+                , {
+                    field: 'date', title: '领用日期'
+                }
+                , { field: 'count', title: '领用数量' }
+                , {
+                    field: 'status', title: '是否归还'
+                }
             ]],
             response: {
                 statusName: 'code' //数据状态的字段名称，默认：code
                 , statusCode: 200 //成功的状态码，默认：0
-                , msgName: 'message' //状态信息的字段名称，默认：msg
+                , msgName: 'msg' //状态信息的字段名称，默认：msg
                 , countName: 'count' //数据总数的字段名称，默认：count
                 , dataName: 'data' //数据列表的字段名称，默认：data
             },
-
-            parseData: function (res) {
-                console.log(res);
+            parseData: function (res) { //res 即为原始返回的数据
+                res.data.map(ele => {
+                    ele.date = new Date(ele.date);
+                    let batchTime = ele.date.getFullYear() + '-' + (ele.date.getMonth() + 1) + '-' + ele.date.getDate();
+                    ele.date = batchTime;
+                    ele.status = ele.status==1?'未归还':'已归还';
+                })
                 return {
                     "code": res.code, //解析接口状态
                     "msg": res.message, //解析提示文本
                     "count": res.total, //解析数据长度
                     "data": res.data //解析数据列表
                 };
-                
-
-            }
-             , page:true
-
-
-
+            },
 
         });
     });

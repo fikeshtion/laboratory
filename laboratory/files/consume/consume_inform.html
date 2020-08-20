@@ -35,6 +35,10 @@
             width: 600px;
             margin: 0 auto;
         }
+
+        .layui-laypage-btn {
+            margin-top: 0;
+        }
     </style>
 </head>
 
@@ -84,7 +88,7 @@
                     <a href="javascript:;">系统</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">用户信息</a></dd>
-                        <dd><a href="./system-password.html">密码修改</a></dd>
+                        <dd><a href="../system/system-password.html">密码修改</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -97,21 +101,13 @@
             </ul>
         </div>
         <div id="app">
-            <div class="layui-col-md3" >
+            <div class="layui-col-md3">
                 <div class="echarts" style="width: 100%; height: 240px; padding: 2% 0;"></div>
             </div>
             <div class="layui-form layui-col-md9">
-                <table class="layui-table">
-                    <thead>
-                        <tr>
-                            <th v-for="item in data" key="id">{{item.names}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-                
+                <div id="table">
+                    <table class="layui-hide" id="test" lay-filter="test"></table>
+                </div>
             </div>
         </div>
         <div class="demo">
@@ -126,45 +122,49 @@
     <!--再加载插件-->
     <script src="../../assets/js/layui_exts/excel.js"></script>
     <script>
-        layui.use('laypage', function () {
-            var laypage = layui.laypage;
-
-            //执行一个laypage实例
-            laypage.render({
-                elem: 'demo8',
+        layui.use('table', function () {
+            var table = layui.table;
+            table.render({
+                elem: '#test'
+                , url: 'http://192.168.0.117:8080/lab/allconsumeinforms',
+                method: "get",
                 count: 50,
-                limit: 10,
-                layout: ['limit', 'prev', 'page', 'next'],
-                jump: function (obj, first) {
-                    //obj包含了当前分页的所有参数，比如：
-                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                    console.log(obj.limit); //得到每页显示的条数
+                page: true,
+                limit: 5,
+                limits: [5, 10, 15, 20],
+                cols: [[
+                    { field: 'id', title: '耗材编号' }
+                    , { field: 'name', title: '耗材名称' }
+                    , { field: 'brand', title: '品牌型号' }
+                    , { field: 'num', title: '耗材数量' }
+                    , { field: 'facid', title: '出厂编号' }
+                    , { field: 'factime', title: '出厂日期' }
+                    , { field: 'proid', title: '生产厂家编号', width: 120 }
+                    , { field: 'supid', title: '供应商编号' }
+                ]],
+                response: {
+                    statusName: 'code' //数据状态的字段名称，默认：code
+                    , statusCode: 200 //成功的状态码，默认：0
+                    , msgName: 'message' //状态信息的字段名称，默认：msg
+                    , countName: 'count' //数据总数的字段名称，默认：count
+                    , dataName: 'data' //数据列表的字段名称，默认：data
+                },
+                parseData: function (res) { //res 即为原始返回的数据
+                    res.data.map(ele => {
+                        ele.factime = new Date(ele.factime);
+                        let batchTime = ele.factime.getFullYear() + '-' + (ele.factime.getMonth() + 1) + '-' + ele.factime.getDate();
+                        ele.factime = batchTime;
+                    })
+                    return {
+                        "code": res.code, //解析接口状态
+                        "msg": res.message, //解析提示文本
+                        "count": res.total, //解析数据长度
+                        "data": res.data //解析数据列表
+                    };
+                },
 
-                    //首次不执行
-                    if (!first) {
-                        //do something
-                    }
-                }
             });
         });
-    </script>
-
-    <script>
-        let vm = new Vue({
-            el: '#app',
-            data: {
-                data: [
-                    { id: 1, names: '耗材编号' },
-                    { id: 2, names: '耗材名称' },
-                    { id: 3, names: '品牌型号' },
-                    { id: 4, names: '耗材数量' },
-                    { id: 5, names: '出厂编号' },
-                    { id: 6, names: '出厂日期' },
-                    { id: 7, names: '生产厂家编号' },
-                    { id: 8, names: '供应商编号' }
-                ],
-            },
-        })
     </script>
 </body>
 

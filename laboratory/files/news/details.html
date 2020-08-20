@@ -66,7 +66,7 @@
           <a href="javascript:;">系统</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">用户信息</a></dd>
-            <dd><a href="./system-password.html">密码修改</a></dd>
+            <dd><a href="../system/system-password.html">密码修改</a></dd>
           </dl>
         </li>
       </ul>
@@ -82,16 +82,16 @@
         <div class="layui-row wtx-layui">
           <div class="layui-col-md12 wtx-arrow">
             <h2>主页 /新闻 <span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
-            <h1>{{newsid.title}}</h1>
+            <h1>{{newsid[0].title}}</h1>
             <hr class="wtx-hr">
             </hr>
-            <h4>信息来源：{{newsid.informationSource}} 姓名：{{newsid.author}} 时间：{{time}} </h4>
+            <h4>信息来源：{{newsid[0].informationSource}} 姓名：{{newsid[0].author}} 时间：{{newsid[0].time}} </h4>
             <hr>
           </div>
         </div>
         <div class="layui-row">
           <div class="layui-col-md12 wtx-txt">
-            <p>{{newsid.content}}</p>
+            <p>{{newsid[0].content}}</p>
           </div>
         </div>
         <div class="layui-row layui-col-space30 wtx-foot">
@@ -112,7 +112,7 @@
           </div>
         </div>
         <a href="./details.html?id=1">
-          <p style="color:#06a875;margin-left: 60px;">下一篇：电子信息工程学术导师制度初见成效，实验室召开相关会议</p>
+          <p style="color:#06a875;margin-left: 60px;">下一篇：{{newsid[1].title}}</p>
         </a>
       </div>
     </div>
@@ -190,22 +190,23 @@
       data: {
         newsid: {},
         time:{}
-        
       },
       methods: {
         newsgoods() {
-          let url = "http://192.168.0.117:8080/lab/findnewsbyid/" + nid;
+          let url = "http://192.168.0.117:8080/lab/findnewsnexttonext/1";
           axios({
             url,
-            method: "post",
+            method: "get",
           }).then(res => {
-            console.log(res);
             this.newsid = res.data.data;
-            let time = res.data.data.time;
-            let d = new Date(time);
-            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-            this.time=batchTime;
-            
+            this.newsid.map(ele => {
+              ele.content=ele.content.replace(/<[^>]+>/g,"");
+              ele.time = new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time = batchTime;
+              return ele;
+            });
+            console.log(res);
           }).catch(err => {
             console.log(err);
           })
