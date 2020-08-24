@@ -34,9 +34,10 @@
       width: 600px;
       margin: 0 auto;
     }
-    .layui-laypage-btn{
-            margin-top: 0;
-        }
+
+    .layui-laypage-btn {
+      margin-top: 0;
+    }
   </style>
 </head>
 
@@ -51,45 +52,45 @@
       </a>
       <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
         <li class="layui-nav-item">
-            <a href="javascript:;">设备</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../device/device.html">设备信息查看</a></dd>
-                <dd><a href="../device/labInformation.html">项目信息</a></dd>
-                <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
-                <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
-            </dl>
+          <a href="javascript:;">设备</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../device/device.html">设备信息查看</a></dd>
+            <dd><a href="../device/labInformation.html">项目信息</a></dd>
+            <dd><a href="../device/monitaring.html">实验状态监控</a></dd>
+            <dd><a href="../device/deviceInformation.html">智能分析</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">耗材</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
-                <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
-                <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
-                <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
-            </dl>
+          <a href="javascript:;">耗材</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../consume/consume_inform.html">基本资料</a></dd>
+            <dd><a href="../consume/consume_storage.html">申请购置</a></dd>
+            <dd><a href="../consume/consume-custudy.html">保管领用</a></dd>
+            <dd><a href="../consume/consume-norm.html">管理标准</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">预约</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
+          <a href="javascript:;">预约</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../arrange/arrange-page.html">预约安排</a></dd>
 
-            </dl>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">项目</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../project/project-science.html">实验项目</a></dd>
-                <dd><a href="javascript:;">教学资源</a></dd>
-            </dl>
+          <a href="javascript:;">项目</a>
+          <dl class="layui-nav-child">
+            <dd><a href="../project/project-science.html">实验项目</a></dd>
+            <dd><a href="javascript:;">教学资源</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">系统</a>
-            <dl class="layui-nav-child">
-                <dd><a href="javascript:;">用户信息</a></dd>
-                <dd><a href="../system/system-password.html">密码修改</a></dd>
-            </dl>
+          <a href="javascript:;">系统</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">用户信息</a></dd>
+            <dd><a href="../system/system-password.html">密码修改</a></dd>
+          </dl>
         </li>
-    </ul>
+      </ul>
 
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item layui-hide-sm layui-show-xs-inline-block"><i class="iconfont icon-caidan1"></i></li>
@@ -102,7 +103,7 @@
         hello
       </div>
       <div class="layui-col-md8">
-        <div id="table" >
+        <div id="table">
           <table class="layui-hide" id="test" lay-filter="test"></table>
         </div>
         <div class="table-bottom">
@@ -122,52 +123,45 @@
 
   <script>
     layui.use('table', function () {
-        var table = layui.table;
-        table.render({
-            elem: '#test'
-            , url: 'http://192.168.0.117:8080/lab/allnews',
-            method: "get",
-            count: 50,
-            page: true,
-            limit:5,
-            limits:[5,10,15,20],
-            cols: [[
-                { field: 'id', title: '实验室编号' }
-                , { field: 'experiment', title: '实验项目' }
-                , { field: 'num', title: '实验人数' }
-                , { field: 'date', title: '预约日期' }
-                , { field: 'title', title: '预约设备' }
-                , { field: 'time_start', title: '预约开始时间',width:120 }
-                , { field: 'time_stop', title: '预约结束时间',width:120 }
-                , { field: 'faculty', title: '所属系别' }
-                , { field: 'responsibility', title: '负责人' }
-                , { field: 'status', title: '实验状态' }
-            ]],
-            response: {
-                statusName: 'code' //数据状态的字段名称，默认：code
-                , statusCode: 200 //成功的状态码，默认：0
-                , msgName: 'message' //状态信息的字段名称，默认：msg
-                , countName: 'count' //数据总数的字段名称，默认：count
-                , dataName: 'data' //数据列表的字段名称，默认：data
-            },
-            parseData: function (res) { //res 即为原始返回的数据
-                return {
-                    "code": res.code, //解析接口状态
-                    "msg": res.message, //解析提示文本
-                    "count": res.total, //解析数据长度
-                    "data": res.data //解析数据列表
-                };
-            },
-            done: function (res, curr, count) {
-                //如果是异步请求数据方式，res即为你接口返回的信息。
-                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-                console.log(res.data);
-
-                //得到当前页码
-                console.log(curr);
-                console.log(count);
-            }
-        });
+      var table = layui.table;
+      table.render({
+        elem: '#test'
+        , url: 'http://192.168.0.117:8080/lab/pageFindAllArrange?status=0',
+        method: "get",
+        page: true,
+        limit: 5,
+        limits: [5, 10, 15, 20],
+        cols: [[
+          { field: 'id', title: '实验室编号', width: 100 }
+          , { field: 'projectName', title: '实验项目', width: 90 }
+          , { field: 'num', title: '实验人数', width: 90 }
+          , { field: 'date', title: '预约日期', width: 110 }
+          , { field: 'devices', title: '预约设备' }
+          , { field: 'timeStart', title: '预约开始时间', width: 120 }
+          , { field: 'timeStop', title: '预约结束时间', width: 120 }
+          , { field: 'faculty', title: '所属系别' }
+          , { field: 'responsibility', title: '负责人', width: 75 }
+          , { field: 'status', title: '实验状态' }
+        ]],
+        response: {
+          statusName: 'code' //数据状态的字段名称，默认：code
+          , statusCode: 200 //成功的状态码，默认：0
+          , msgName: 'message' //状态信息的字段名称，默认：msg
+          , countName: 'count' //数据总数的字段名称，默认：count
+          , dataName: 'data' //数据列表的字段名称，默认：data
+        },
+        parseData: function (res) { //res 即为原始返回的数据
+          res.data.map(ele => {
+            ele.status = ele.status == 0 ? '已预约' : '已完成';
+          })
+          return {
+            "code": res.code, //解析接口状态
+            "msg": res.message, //解析提示文本
+            "count": res.total, //解析数据长度
+            "data": res.data //解析数据列表
+          };
+        }
+      });
     });
   </script>
 </body>

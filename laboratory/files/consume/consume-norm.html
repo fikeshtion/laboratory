@@ -80,16 +80,16 @@
         <div class="layui-row wtx-layui">
           <div class="layui-col-md12 wtx-arrow">
             <h2>主页 / 实验制度<span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
-            <h1>{{txtid[0][0].consumeNorm.title}}</h1>
+            <h1>{{txtid[1][0].consumeNorm.title}}</h1>
             <hr class="wtx-hr">
             </hr>
-            <h4>信息来源：{{txtid[0][0].consumeNorm.informationSource}} 文字：{{txtid[0][0].consumeNorm.author}} 时间：{{txtid[0][0].consumeNorm.time}} </h4>
+            <h4>信息来源：{{txtid[1][0].consumeNorm.informationSource}} 文字：{{txtid[1][0].consumeNorm.author}} 时间：{{txtid[1][0].consumeNorm.time}} </h4>
             <hr>
           </div>
         </div>
         <div class="layui-row">
 
-          <div class="layui-col-md12 wtx-txt" v-for="(item,index) in txtid[0][0].content" key="index">
+          <div class="layui-col-md12 wtx-txt" v-for="(item,index) in txtid[1][0].content" key="index">
             <p>{{item}}</p>
           </div>
         </div>
@@ -111,9 +111,9 @@
           </div>
         </div>
       </div> -->
-      <a href="javascript:;">
-        <p style="color:#06a875;margin-left: 85px;">下一篇：{{txtid[1 ][0].consumeNorm.title}}</p>
-      </a>
+      <!-- <a href="javascript:;">
+        <p style="color:#06a875;margin-left: 85px;">下一篇：{{txtid[1][0].consumeNorm.title}}</p>
+      </a> -->
     </div>
   </div>
   <script src="../../assets/js/layui_exts/layui.all.js"></script>
@@ -124,8 +124,7 @@
     new Vue({
       el: "#txt",
       data: {
-        txtid: {},
-        time: {}
+        txtid: {}
       },
       methods: {
         indexnews() {

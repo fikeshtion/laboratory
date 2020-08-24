@@ -40,9 +40,10 @@
       height: 500px;
 
     }
-    .layui-laypage-btn{
-            margin-top: 0;
-        }
+
+    .layui-laypage-btn {
+      margin-top: 0;
+    }
   </style>
 </head>
 
@@ -179,21 +180,25 @@
       var table = layui.table;
       table.render({
         elem: '#test'
-        , url: 'http://192.168.0.139:8080/lab/findAllExperimentProject',
+        , url: 'http://192.168.0.117:8080/lab/pageFindAllArrange',
         method: "get",
         count: 50,
         page: true,
-        limit:5,
-        limits:[5,10,15,20],
+        limit: 5,
+        limits: [5, 10, 15, 20],
         cols: [[
           { field: 'id', title: '实验编号' }
-          , { field: 'experimentName', title: '实验名称' }
+          , { field: 'projectName', title: '实验名称' }
           , { field: 'status', title: '实验状态' }
-          , { field: 'lfaculty', title: '所属院系' }
-          , { field: 'consumeName', title: '所用设备' }
-          , { field: 'lteacher', title: '指导老师' }
-          , { field: 'ldate', title: '实验日期' }
-          , { field: 'ltime', title: '实验时间段' }
+          , { field: 'faculty', title: '所属院系' }
+          , { field: 'devices', title: '所用设备' }
+          , { field: 'laboratoryResponsibility', title: '指导老师' }
+          , { field: 'date', title: '实验日期' }
+          , {
+            field: '', title: '实验时间段', templet: function (d) {
+              return fntime(d.timeStart, d.timeStop);
+            }
+          }
         ]],
         response: {
           statusName: 'code' //数据状态的字段名称，默认：code
@@ -203,16 +208,21 @@
           , dataName: 'data' //数据列表的字段名称，默认：data
         },
         parseData: function (res) { //res 即为原始返回的数据
-                return {
-                    "code": res.code, //解析接口状态
-                    "msg": res.message, //解析提示文本
-                    "count": res.total, //解析数据长度
-                    "data": res.data //解析数据列表
-                };
-            },
-        
+          res.data.map(ele => {
+            ele.status = ele.status == 0 ? '已预约' : '已完成';
+          })
+          return {
+            "code": res.code, //解析接口状态
+            "msg": res.message, //解析提示文本
+            "count": res.total, //解析数据长度
+            "data": res.data //解析数据列表
+          };
+        },
       });
     });
+    function fntime(timestart, timestop) {
+      return timestart + "-" + timestop;
+    }
   </script>
 </body>
 

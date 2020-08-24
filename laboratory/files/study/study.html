@@ -82,16 +82,16 @@
           <div class="layui-col-md12 wtx-arrow">
             <h2>主页 /科学教研 <span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
 
-            <h1>{{studyid.title}}</h1>
+            <h1>{{studyid[0].title}}</h1>
             <hr class="wtx-hr">
             </hr>
-            <h4>信息来源：{{studyid.informationSource}} 姓名：{{studyid.author}} 时间：{{time}}</h4>
+            <h4>信息来源：{{studyid[0].informationSource}} 姓名：{{studyid[0].author}} 时间：{{studyid[0].time}}</h4>
             <hr>
           </div>
         </div>
         <div class="layui-row">
           <div class="layui-col-md12 wtx-txt">
-            <p>{{studyid.content}}</p>
+            <p>{{studyid[0].content}}</p>
           </div>
         </div>
         <div class="layui-row layui-col-space30 wtx-foot">
@@ -111,8 +111,8 @@
             </div>
           </div>
         </div>
-        <a href="./study.html?id=1">
-          <p style="color:#06a875;margin-left: 60px;">下一篇：我校组织协办线上科技成果转化案例深度解析主题......</p>
+        <a :href="'./study.html?id='+studyid[1].id+'&studyOffsetId='+nextOffsetId" v-if="studyid[1]">
+          <p style="color:#06a875;margin-left: 60px;">下一篇：{{studyid[1].title}}</p>
         </a>
       </div>
     </div>
@@ -179,29 +179,36 @@
       }
       return obj;
     }
-    console.log(getAllUrlParams().id);
-    var nid = getAllUrlParams().id;//获取地址中的参数
+    var studyOffsetId=getAllUrlParams().studyoffsetid;
+    nextOffsetId=Number(studyOffsetId)+1;
+    console.log(nextOffsetId)
     new Vue({
       el: "#studyid",
       data: {
-        studyid: {},
-        time: {}
-
+        studyid: {}
       },
       methods: {
         newsgoods() {
-          let url = "http://192.168.0.117:8080/lab/findstudybyid/" + nid;
+          let url = "http://192.168.0.117:8080/lab/findstudynexttonext";
           axios({
             url,
-            method: "post",
+            method: "get",
+            params:{
+              studyOffsetId:studyOffsetId
+            }
           }).then(res => {
             console.log(res);
             this.studyid = res.data.data;
-            let time = res.data.data.time;
-            let d = new Date(time);
-            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-            this.time = batchTime;
-
+            console.log(this.studyid)
+            this.studyid.map(ele => {
+              //去除标签
+              ele.content = ele.content.replace(/<[^>]+>/g, "");
+              //事件戳转日期
+              ele.time = new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time = batchTime;
+              return ele;
+            });
           }).catch(err => {
             console.log(err);
           })

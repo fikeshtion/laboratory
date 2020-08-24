@@ -111,7 +111,7 @@
             </div>
           </div>
         </div>
-        <a href="./details.html?id=1">
+        <a :href="'./details.html?id='+newsid[1].id+'&newsOffsetId='+nextOffsetId" v-if="newsid[1]">
           <p style="color:#06a875;margin-left: 60px;">下一篇：{{newsid[1].title}}</p>
         </a>
       </div>
@@ -128,7 +128,6 @@
       $("#slide dd").on('click', function () {
         layer.msg('请先登录');
       });
-
     });
     function getAllUrlParams(url) {
       // 用JS拿到URL，如果函数接收了URL，那就用函数的参数。如果没传参，就使用当前页面的URL
@@ -183,34 +182,39 @@
       }
       return obj;
     }
-    console.log(getAllUrlParams().id);
+    
     var nid = getAllUrlParams().id;//获取地址中的参数
+    var newsOffsetId=getAllUrlParams().newsoffsetid;//获取地址中的首页传过来的索引值
+    nextOffsetId=Number(newsOffsetId)+1
     new Vue({
       el: "#newsid",
       data: {
         newsid: {},
-        time:{}
       },
       methods: {
         newsgoods() {
-          let url = "http://192.168.0.117:8080/lab/findnewsnexttonext/1";
+          let url = "http://192.168.0.117:8080/lab/findnewsnexttonext";
           axios({
             url,
             method: "get",
+            params:{
+              newsOffsetId:newsOffsetId
+            }
           }).then(res => {
             this.newsid = res.data.data;
             this.newsid.map(ele => {
-              ele.content=ele.content.replace(/<[^>]+>/g,"");
+              //去除标签
+              ele.content = ele.content.replace(/<[^>]+>/g, "");
+              //事件戳转日期
               ele.time = new Date(ele.time);
               let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
               ele.time = batchTime;
               return ele;
             });
-            console.log(res);
           }).catch(err => {
             console.log(err);
           })
-        }
+        },
       },
       mounted() {
         this.newsgoods();

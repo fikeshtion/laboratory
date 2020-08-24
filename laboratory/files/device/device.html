@@ -100,15 +100,13 @@
         <div id="table">
           <table class="layui-hide" id="test" lay-filter="test"></table>
         </div>
-
         <!-- <div class="table-bottom">
           <button type="button" lay-submit="" class="layui-btn layui-btn-warm" id="exportExcel" name="exportExcels"
-            style="float: right;">
+            style="float: left;">
             <i class="layui-icon"></i>导出实验室设备损耗率报告</button>
           <button type="button" lay-submit="" class="layui-btn d" id="exportExcel" name="exportExcel"
             style="float: right;">
             <i class="layui-icon"></i>导出实验室设备使用率报告</button>
-
         </div> -->
       </div>
     </div>
@@ -142,10 +140,6 @@
           , { field: 'proid', title: '生产厂商编号' }
           , { field: 'supid', title: '供应商编号' }
         ]],
-        // request: {
-        //     pageName: 'curr' //页码的参数名称，默认：page
-        //     ,limitName: 'limit' //每页数据量的参数名，默认：limit
-        // },
         response: {
           statusName: 'code' //数据状态的字段名称，默认：code
           , statusCode: 200 //成功的状态码，默认：0
@@ -154,7 +148,7 @@
           , dataName: 'data' //数据列表的字段名称，默认：data
         },
         parseData: function (res) { //res 即为原始返回的数据
-          res.data.map(ele=>{
+          res.data.map(ele => {
             ele.factime = new Date(ele.factime);
             let batchTime = ele.factime.getFullYear() + '-' + (ele.factime.getMonth() + 1) + '-' + ele.factime.getDate();
             ele.factime = batchTime;

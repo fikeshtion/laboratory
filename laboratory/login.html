@@ -40,33 +40,31 @@
           <a href="javascript:;">耗材</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">基本资料</a></dd>
-            <dd><a href="javascript:;">购置与入库</a></dd>
-            <dd><a href="javascript:;">保管和领用</a></dd>
-            <dd><a href="javascript:;">制定严格标准</a></dd>
+            <dd><a href="javascript:;">申请购置</a></dd>
+            <dd><a href="javascript:;">保管领用</a></dd>
+            <dd><a href="javascript:;">管理标准</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">预约</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">预约与安排</a></dd>
+            <dd><a href="javascript:;">预约安排</a></dd>
 
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">项目</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">科学项目管理</a></dd>
-            <dd><a href="javascript:;">核查项目管理</a></dd>
+            <dd><a href="javascript:;">实验项目</a></dd>
+            <dd><a href="javascript:;">教学资源</a></dd>
 
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">系统</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">角色管理</a></dd>
+            <dd><a href="javascript:;">用户信息</a></dd>
             <dd><a href="javascript:;">密码修改</a></dd>
-            <dd><a href="javascript:;">账号管理</a></dd>
-            <dd><a href="javascript:;">用户审计</a></dd>
           </dl>
         </li>
       </ul>
@@ -88,92 +86,35 @@
             </div>
           </div>
         </div>
-        <div class="layui-col-md3 new">
-          <h3>新闻 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
-          <ul class="news">
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">高校疫情期间在线教学及国际慕课建设线上研讨会召开</h4>
-              <span>2019/4/20</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">电子信息工程学术导师制度初见成效，实验室召开相关会议</h4>
-              <span>2019/5/26</span>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">实验室召开《信息技术，基于传感器网络的工业设备点检系统》</h4>
-              <span>2019/5/28</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2"><a href="javascript:;">【新时代新气象新作为】我校两个教育部重点首演时通过评估</a></h4>
-              <span>2019/5/29</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h4 class="hidden2">高校科技成果转化工作培训会召开环境科学研究所在碳量子点研究中取得新进展</a></h4>
-              <span>2019/6/1</span>
-            </li>
-            </a>
-           <!--  <li>
-              <h4 class="hidden2">环境科学研究所在碳量子点研究中取得新进展</h4>
-              <span>2019/6/10</span>
-            </li>
-            <li>
-              <h4 class="hidden2">实验室召开相关会议，讨论实验室相关事宜</h4>
-              <span>2019/6/15</span>
-            </li>
-            <li>
-              <h4 class="hidden2">实验室《信息技术，基于传感器网络的工业设备点检系统》</h4>
-              <span>2019/6/28</span>
-            </li>
-            <li>
-              <h4 class="hidden2">我校两个教育部重点首演时通过评估</h4>
-              <span>2019/6/29</span>
-            </li>
- -->
-          </ul>
+        <div id="news">
+          <div class="layui-col-md3 new">
+            <h3>新闻 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
+            <ul class="news">
+              <a href="javascript:;" v-for="(item,index) in news" key="index">
+                <li>
+                  <h4 class="hidden2">{{item.title}}</h4>
+                  <span>{{item.time}}</span>
+                </li>
+              </a>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="layui-row">
-        <div class="layui-col-md9 zd">
-          <h3>实验制度 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
-          <div class="img imgl">
-            <img src="./assets/images/1-1.png" alt="">
+        <div id="system">
+          <div class="layui-col-md9 zd">
+            <h3>实验制度 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
+            <div class="img imgl">
+              <img src="./assets/images/1-1.png" alt="">
+            </div>
+            <ul class="news news1">
+              <a href="javascript:;" v-for="(item,index) in system" key="index">
+                <li>
+                  <h5 class="hidden1">{{item.title}}</h5>
+                </li>
+              </a>
+            </ul>
           </div>
-          <ul class="news news1">
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">1.实验结束后必须检查水，电，门，窗等是否关闭。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">2.使用实验的人员必须保持实验室及使用设备的清洁。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">3.实验室设备未经许可不得外借。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">4.设备使用采用使用者登记制度。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">5.易损设备损坏必须登记，使用人登记。</h5>
-            </li>
-            </a>
-          </ul>
         </div>
         <div class="layui-col-md3 form">
           <form action="" class="layui-form">
@@ -200,71 +141,43 @@
         </div>
       </div>
       <div class="layui-row">
-        <div class="layui-col-md9 ky">
-          <h3>教学科研 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
-          <div class="img imgr">
-            <img src="./assets/images/1-2.png" alt="">
+        <div id="study">
+          <div class="layui-col-md9 ky">
+            <h3>教学科研 <span class="red">更多<i class="layui-icon">&#xe602;</i> </span></h3>
+            <div class="img imgr">
+              <img src="./assets/images/1-2.png" alt="">
+            </div>
+            <ul class="news news2">
+              <a href="javascript:;" v-for="(item,index) in study">
+                <li>
+                  <h5 class="hidden1">{{item.title}}</h5>
+                </li>
+              </a>
+            </ul>
           </div>
-          <ul class="news news2">
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">疫情期间线上教学及线上研讨会的召开。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">我校组织协办线上科技成果转化案例深度解析主题......</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">学校开展实验岗教师安全培训及危化品安全演练。</h5>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">学校召开提升综合实力工作安排部署会。</h5>
-            </li>
-          </a>
-          <a href="javascript:;">
-            <li>
-              <h5 class="hidden1">校领导深入实验室随机检查实验室的爱护以及卫生......</h5>
-            </li>
-            </a>
-          </ul>
         </div>
-        <div class="layui-col-md3 gg">
-          <h3>通知公告</h3>
-          <ul class="note">
-            <a href="javascript:;">
-            <li>
-              <img src="./assets/images/1-3.png" alt="">
-              <h4 class="hidden1">实验室最新使用制度</h4>
-              <span>2019/4/20</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <img src="./assets/images/1-4.png" alt="">
-              <h4 class="hidden1">最新化学设备借用制度</h4>
-              <span>2019/6/26</span>
-            </li>
-            </a>
-            <a href="javascript:;">
-            <li>
-              <img src="./assets/images/1-5.png" alt="">
-              <h4 class="hidden1">计算机实验室使用制度说明</h4>
-              <span>2019/6/28</span>
-            </li>
-            </a>
-          </ul>
+        <div id="notice">
+          <div class="layui-col-md3 gg">
+            <h3>通知公告</h3>
+            <ul class="note">
+              <a href="javascript:;" v-for="(item,index) in notice" key="index">
+                <li>
+                  <img src="./assets/images/1-3.png" alt="">
+                  <h4 class="hidden1">{{item.title}}</h4>
+                  <span>{{item.time}}</span>
+                </li>
+              </a>
+            </ul>
+          </div>
         </div>
+        
       </div>
     </div>
   </div>
   <script src="./assets/js/layui_exts/layui.all.js"></script>
+  <script src="./assets/js/vue/axios.js"></script>
+  <script src="./assets/js/vue/vue.min.js"></script>
   <script>
-
     layui.use(['layer', 'form', 'carousel', 'element'], function () {
 
       let { layer, form, $, carousel, element } = layui;
@@ -319,7 +232,126 @@
         layer.msg('请先登录');
       });
 
+      // $(document).on('click', "#slide dd", function() {
+      //   layer.msg('请先登录');
+      // });
+
     });
+  </script>
+  <script>
+    //新闻渲染
+    new Vue({
+      el: "#news",
+      data: {
+        news: null,
+        time: {}
+      },
+      methods: {
+        indexnews() {
+          let url = "http://192.168.0.117:8080/lab/allnewslatestfive";
+          axios({
+            url,
+            method: "get",
+          }).then(res => {
+            this.news = res.data.data;
+            this.news.map(ele => {
+              ele.time = new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time = batchTime;
+              return ele;
+            });
+            // console.log(res);
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+      },
+      mounted() {
+        this.indexnews();
+      }
+    })
+    //实验制度渲染
+    new Vue({
+      el: "#system",
+      data: {
+        system: null,
+      },
+      methods: {
+        indexsystem() {
+          let url = "http://192.168.0.117:8080/lab/allregimelatestfive";
+          axios({
+            url,
+            method: "get",
+          }).then(res => {
+            // console.log(res);
+            this.system = res.data.data;
+            // console.log(this.system);
+
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+      },
+      mounted() {
+        this.indexsystem();
+      }
+    })
+    //教学科研渲染
+    new Vue({
+      el: "#study",
+      data: {
+        study: null,
+      },
+      methods: {
+        indexstudy() {
+          let url = "http://192.168.0.117:8080/lab/allstudylatestfive";
+          axios({
+            url,
+            method: "get",
+          }).then(res => {
+            this.study = res.data.data;
+            // console.log(this.study);
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+      },
+      mounted() {
+        this.indexstudy();
+      }
+    })
+    //通知公告渲染
+    new Vue({
+      el: "#notice",
+      data: {
+        notice: null,
+      },
+      methods: {
+        indexnotice() {
+          let url = "http://192.168.0.117:8080/lab/allnoticelatestfive";
+          axios({
+            url,
+            method: "get",
+          }).then(res => {
+            // console.log(res);
+            this.notice = res.data.data;
+            // console.log(this.notice);
+            this.notice.map(ele => {
+              ele.time = new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time = batchTime;
+              return ele;
+            });
+            // console.log(res);
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+      },
+      mounted() {
+        this.indexnotice();
+      }
+    })
   </script>
 </body>
 

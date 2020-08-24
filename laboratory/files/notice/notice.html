@@ -28,8 +28,6 @@
           高校实验室管理平台
         </div>
       </a>
-
-
       <ul class="layui-col-md7 layui-hide-xs  layui-nav layui-layout-left" style="margin-left:20%;">
         <li class="layui-nav-item">
           <a href="javascript:;">设备</a>
@@ -83,16 +81,16 @@
         <div class="layui-row wtx-layui">
           <div class="layui-col-md12 wtx-arrow">
             <h2>主页 / 通知公告<span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
-            <h1>{{noticeid.title}}</h1>
+            <h1>{{noticeid[0].title}}</h1>
             <hr class="wtx-hr">
             </hr>
-            <h4>信息来源：{{noticeid.informationSource}} 姓名：{{noticeid.author}} 时间：{{time}}</h4>
+            <h4>信息来源：{{noticeid[0].informationSource}} 姓名：{{noticeid[0].author}} 时间：{{noticeid[0].time}}</h4>
             <hr>
           </div>
         </div>
         <div class="layui-row">
           <div class="layui-col-md12 wtx-txt">
-            <p>{{noticeid.content}}</p>
+            <p>{{noticeid[0].content}}</p>
           </div>
         </div>
         <!-- <div class="layui-row layui-col-space30 wtx-foot">
@@ -113,8 +111,8 @@
         </div>
       </div>
        -->
-        <a href="./notice.html?id=1">
-          <p style="color:#06a875;margin-left: 60px;">下一篇：实验室最新使用制度</p>
+        <a :href="'./notice.html?id='+noticeid[1].id+'&noticeOffsetId='+nextOffsetId" v-if="noticeid[1]">
+          <p style="color:#06a875;margin-left: 60px;">下一篇：{{noticeid[1].title}}</p>
         </a>
       </div>
     </div>
@@ -181,33 +179,38 @@
       }
       return obj;
     }
-    var nid = getAllUrlParams().id;//获取地址中的参数
+    // var nid = getAllUrlParams().id;//获取地址中的参数
+    var noticeOffsetId = getAllUrlParams().noticeoffsetid;
+    nextOffsetId = Number(noticeOffsetId) + 1
     new Vue({
       el: "#noticeid",//绑定标签
       data: {//定义变量
         noticeid: {},
-        time: {}
-
       },
       methods: {
         systemgoods() {//写一个方法发请求
-          let url = "http://192.168.0.117:8080/lab/findnoticebyid/" + nid;//地址
+          let url = "http://192.168.0.117:8080/lab/findnoticenexttonext";//地址
           axios({
             url,
-            method: "post",//请求方式
+            method: "get",//请求方式
+            params: {
+              noticeOffsetId: noticeOffsetId
+            }
           }).then(res => {
-            console.log(res);//成功后返回
             this.noticeid = res.data.data;
-            this.noticeid.content = this.noticeid.content.replace(/<[^>]+>/g,"");
-            let time = res.data.data.time;//时间戳处理
-            let d = new Date(time);
-            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-            this.time=batchTime;
-            console.log(this.time)
+            this.noticeid.map(ele => {
+              //去除标签
+              ele.content = ele.content.replace(/<[^>]+>/g, "");
+              //事件戳转日期
+              ele.time = new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time = batchTime;
+              return ele;
+            });
           }).catch(err => {//失败后返回
             console.log(err);
           })
-        }
+        },
       },
       mounted() {
         this.systemgoods();

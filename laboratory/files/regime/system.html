@@ -81,16 +81,16 @@
         <div class="layui-row wtx-layui">
           <div class="layui-col-md12 wtx-arrow">
             <h2>主页 / 实验制度<span style="float: right; color:#06a875;"><a href="../../index.html">【关闭】</a></span></h2>
-            <h1>{{systemid.title}}</h1>
+            <h1>{{systemid[0].title}}</h1>
             <hr class="wtx-hr">
             </hr>
-            <h4>信息来源：{{systemid.informationSource}} 姓名：{{systemid.author}} 时间：{{time}} </h4>
+            <h4>信息来源：{{systemid[0].informationSource}} 姓名：{{systemid[0].author}} 时间：{{systemid[0].time}} </h4>
             <hr>
           </div>
         </div>
         <div class="layui-row">
           <div class="layui-col-md12 wtx-txt">
-            <p>{{systemid.content}}</p>
+            <p>{{systemid[0].content}}</p>
           </div>
         </div>
         <!-- <div class="layui-row layui-col-space30 wtx-foot">
@@ -110,8 +110,8 @@
           </div>
         </div>
       </div> -->
-        <a href="./system.html?id=1">
-          <p style="color:#06a875;margin-left: 85px;">下一篇：实验规章制度</p>
+        <a :href="'./system.html?id='+systemid[1].id+'&regimeOffsetId='+nextOffsetId" v-if="systemid[1]">
+          <p style="color:#06a875;margin-left: 85px;">下一篇：{{systemid[1].title}}</p>
         </a>
       </div>
     </div>
@@ -190,33 +190,40 @@
       }
       return obj;
     }
-    console.log(getAllUrlParams().id);
-    var nid = getAllUrlParams().id;//获取地址中的参数
+
+    var regimeOffsetId = getAllUrlParams().regimeoffsetid;
+    nextOffsetId = Number(regimeOffsetId) + 1
     new Vue({
       el: "#systemid",
       data: {
-        systemid: {},
-        time: {}
-
+        systemid: {}
       },
       methods: {
         systemgoods() {
-          let url = "http://192.168.0.117:8080/lab/findregimebyid/" + nid;
+          let url = "http://192.168.0.117:8080/lab/findregimenexttonext";
           axios({
             url,
-            method: "post",
+            method: "get",
+            params: {
+              regimeOffsetId: regimeOffsetId
+            }
           }).then(res => {
-            console.log(res);
+            console.log(res)
             this.systemid = res.data.data;
-            let time = res.data.data.time;
-            let d = new Date(time);
-            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-            this.time=batchTime;
-
+            console.log(this.systemid)
+            this.systemid.map(ele => {
+              //去除标签
+              ele.content = ele.content.replace(/<[^>]+>/g, "");
+              //事件戳转日期
+              ele.time = new Date(ele.time);
+              let batchTime = ele.time.getFullYear() + '-' + (ele.time.getMonth() + 1) + '-' + ele.time.getDate();
+              ele.time = batchTime;
+              return ele;
+            });
           }).catch(err => {
             console.log(err);
           })
-        }
+        },
       },
       mounted() {
         this.systemgoods();
